@@ -1,0 +1,28 @@
+{
+  "name": "ecosystem-ui",
+  "version": "1.0.0",
+  "author": "bapX",
+  "description": "Central bapX ecosystem UI for bapx.in, mediahub.bapx.in, blog.bapx.in, docs.bapx.in, and AVM brand surfaces",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^4.7.0",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.9.3",
+    "vite": "^7.0.5",
+    "vite-plugin-svgr": "^4.3.0"
+  }
+}
