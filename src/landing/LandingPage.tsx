@@ -734,8 +734,8 @@ function AvmLandingPage() {
         <nav className="site-nav" aria-label="AVM navigation">
           <a href="#package">Package</a>
           <a href="#install">Install</a>
+          <a href="#gateway">API/MCP</a>
           <a href="#pricing">Pricing</a>
-          <a href="#runtime">Runtime</a>
           <a href="https://docs.bapx.in">Docs</a>
           <a href="mailto:info@bapx.in">Contact</a>
         </nav>
@@ -746,26 +746,27 @@ function AvmLandingPage() {
 
       <section className="hero-section">
         <div className="hero-copy">
-          <h1>Install AVM on your own VPS and connect it to bapX agents</h1>
+          <h1>Install bapXvm as the AVM package inside your own VM</h1>
           <p>
-            avm.bapx.in is the focused product surface for the self-hosted Agentic Virtual Machine:
-            a customer-owned VPS runtime, backend services, dashboard, MCP contracts, and connectors
-            for the bapX ChatGPT app, mobile app, and Codex plugin through api.bapx.in/mcp.
+            avm.bapx.in is the package and connector surface for a headless Agentic Virtual
+            Machine runtime. The npm package installs bapXvm services into the customer VM,
+            while ChatGPT, Codex, and bapX connectors operate it through api.bapx.in and
+            api.bapx.in/mcp. The package does not ship a local product UI.
           </p>
           <div className="hero-actions">
             <a className="primary-action" href="https://avm.bapx.in/install.sh">
               Download install script
             </a>
-            <a className="secondary-action" href="#package">
-              Review install path
+            <a className="secondary-action" href="#gateway">
+              Review API/MCP path
             </a>
           </div>
         </div>
         <div className="workflow-visual" aria-label="AVM install workflow">
           <div className="visual-grid" />
           <div className="node node-primary">
-            <span>NPM</span>
-            <strong>Install</strong>
+            <span>@bapX/vm</span>
+            <strong>Package</strong>
           </div>
           <div className="node node-media">
             <span>VPS</span>
@@ -773,15 +774,15 @@ function AvmLandingPage() {
           </div>
           <div className="node node-site">
             <span>Proxy</span>
-            <strong>AVM</strong>
+            <strong>AVP ID</strong>
           </div>
           <div className="node node-ops">
             <span>MCP</span>
-            <strong>Tools</strong>
+            <strong>Gateway</strong>
           </div>
           <div className="node node-platform">
-            <span>Ops</span>
-            <strong>Health</strong>
+            <span>API</span>
+            <strong>Services</strong>
           </div>
           <svg className="workflow-lines" viewBox="0 0 720 520" role="presentation">
             <path d="M146 166 C 260 88, 390 92, 518 156" />
@@ -793,17 +794,17 @@ function AvmLandingPage() {
           <div className="signal signal-b" />
           <div className="visual-caption">
             <span>avm.bapx.in</span>
-            <strong>AVM package, customer VPS runtime, MCP gateway, and agent-operable backend.</strong>
+            <strong>Headless package, generated runtime proxy, and shared API/MCP gateway.</strong>
           </div>
         </div>
       </section>
 
       <section className="service-strip" aria-label="AVM package summary">
         <span>@bapX/vm target</span>
-        <span>Customer VPS</span>
-        <span>Self-hosted backend</span>
-        <span>Dashboard</span>
-        <span>MCP</span>
+        <span>Headless runtime</span>
+        <span>api.bapx.in</span>
+        <span>api.bapx.in/mcp</span>
+        <span>Generated proxy</span>
         <span>$5/mo plan</span>
       </section>
 
@@ -811,27 +812,27 @@ function AvmLandingPage() {
         <div className="section-heading">
           <h2>The package is the product gate</h2>
           <p>
-            The public motion is self-hosted first: install AVM on your VPS, connect it to bapX,
-            and let agents operate through api.bapx.in/mcp. Managed VM resale is later roadmap,
-            after the installer and runtime contracts are solid.
+            The public motion is self-hosted first: install bapXvm on your VM, register it
+            with bapX, and let agents operate through the shared API and MCP gateway. Managed
+            VM resale is later roadmap, after the package contract is solid.
           </p>
         </div>
         <div className="service-list">
           {[
             {
-              title: 'Installer',
-              copy: 'Target command: curl the installer from avm.bapx.in, then bootstrap the npm runtime package on a customer VPS.',
-              items: ['curl install.sh', '@bapX/vm target', 'No customer Deno requirement'],
+              title: 'Headless package',
+              copy: 'The installer bootstraps bapXvm services into the customer VM. It is infrastructure, not a bundled local web app.',
+              items: ['curl install.sh', '@bapX/vm target', 'No bundled UI'],
             },
             {
-              title: 'Runtime boundary',
-              copy: 'Separate source checkout from runtime directories, secrets, logs, storage, services, and backups.',
-              items: ['systemd', 'secrets', 'backups'],
+              title: 'Generated runtime proxy',
+              copy: 'Each registered runtime gets a generated surface such as AVP<8chrandomid>.vm.bapx.in, bound to exactly one VM boundary.',
+              items: ['AVP<8chrandomid>.vm.bapx.in', 'one VM boundary', 'TLS proxy'],
             },
             {
-              title: 'Proxy and MCP',
-              copy: 'Connect the self-hosted VPS to api.bapx.in/mcp so ChatGPT, mobile, and Codex tools can operate the backend.',
-              items: ['api.bapx.in/mcp', 'ChatGPT connector', 'Codex plugin'],
+              title: 'API and MCP connector',
+              copy: 'ChatGPT web UI, mobile, Codex, and the bapX connector operate the runtime through api.bapx.in and api.bapx.in/mcp.',
+              items: ['api.bapx.in', 'api.bapx.in/mcp', 'bapX connector'],
             },
           ].map((service) => (
             <article className="service-row" key={service.title}>
@@ -855,17 +856,17 @@ function AvmLandingPage() {
           <div>
             <span>01</span>
             <strong>Install</strong>
-            <p>Run `curl -fsSL https://avm.bapx.in/install.sh | bash` on a dedicated Ubuntu VPS.</p>
+            <p>Run `curl -fsSL https://avm.bapx.in/install.sh | bash` on a dedicated Ubuntu VM.</p>
           </div>
           <div>
             <span>02</span>
-            <strong>Connect</strong>
-            <p>Link the runtime to the bapX connector, ChatGPT app, mobile app, or Codex plugin.</p>
+            <strong>Register</strong>
+            <p>Bind the runtime to api.bapx.in/mcp with owner, project, service, and VM boundary metadata.</p>
           </div>
           <div>
             <span>03</span>
             <strong>Operate</strong>
-            <p>Use dashboard, logs, diagnostics, backups, updates, rollback, and MCP tools.</p>
+            <p>Operate through ChatGPT, Codex, the bapX connector, and the generated AVP proxy hostname.</p>
           </div>
         </div>
       </section>
@@ -875,7 +876,7 @@ function AvmLandingPage() {
           <h2>Simple self-hosted pricing</h2>
           <p>
             AVM is priced around software access and connectors, not VPS resale. Customers bring
-            their own VPS first; managed hosting and resale stay in roadmap.
+            their own VM first; managed hosting and resale stay in roadmap.
           </p>
         </div>
         <div className="story-grid">
@@ -886,7 +887,7 @@ function AvmLandingPage() {
           </article>
           <article className="story-card">
             <span>Self-hosted</span>
-            <h3>$5 per month for bapXvm on your own VPS.</h3>
+            <h3>$5 per month for the headless AVM package on your own VM.</h3>
             <a href="mailto:info@bapx.in?subject=AVM%20self-hosted%20plan">Use self-hosted</a>
           </article>
           <article className="story-card">
@@ -897,12 +898,13 @@ function AvmLandingPage() {
         </div>
       </section>
 
-      <section id="runtime" className="platform-section">
+      <section id="gateway" className="platform-section">
         <div>
-          <h2>AVM is the backend base for the bapX ecosystem</h2>
+          <h2>The connector is bigger than AVM</h2>
           <p>
-            bapX uses AVM first for its own ecosystem: Media Hub operations, client collaboration
-            workflows, product backends, and agent access through api.bapx.in/mcp.
+            api.bapx.in and api.bapx.in/mcp are shared gateways for AVM and the wider bapX
+            ecosystem. AVM is one installable runtime; the same connector layer also serves
+            other bapX products, docs, schemas, and service tools.
           </p>
         </div>
         <a className="secondary-action dark" href="https://docs.bapx.in">
