@@ -10,7 +10,7 @@ The public installer URL is reserved at:
 This installer is for the headless bapXvm/AVM npm package. It does not install a local product UI.
 
 The visible runtime surface is created only after connector registration, using a generated hostname like:
-  AVP<8chrandomid>.vm.bapx.in
+  ACM<8chrandomid>.vm.bapx.in
 
 The AVM npm package is not published from this repository yet. The installer must not modify your VM until the package, runtime layout, secrets handling, rollback, diagnostics, and tests are complete.
 

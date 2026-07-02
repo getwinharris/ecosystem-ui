@@ -774,7 +774,7 @@ function AvmLandingPage() {
           </div>
           <div className="node node-site">
             <span>Proxy</span>
-            <strong>AVP ID</strong>
+            <strong>ACM ID</strong>
           </div>
           <div className="node node-ops">
             <span>MCP</span>
@@ -826,8 +826,8 @@ function AvmLandingPage() {
             },
             {
               title: 'Generated runtime proxy',
-              copy: 'Each registered runtime gets a generated surface such as AVP<8chrandomid>.vm.bapx.in, bound to exactly one VM boundary.',
-              items: ['AVP<8chrandomid>.vm.bapx.in', 'one VM boundary', 'TLS proxy'],
+              copy: 'Each registered runtime gets a generated hostname such as ACM<8chrandomid>.vm.bapx.in, bound to exactly one VM boundary.',
+              items: ['ACM<8chrandomid>.vm.bapx.in', 'one VM boundary', 'TLS proxy'],
             },
             {
               title: 'API and MCP connector',
@@ -866,7 +866,7 @@ function AvmLandingPage() {
           <div>
             <span>03</span>
             <strong>Operate</strong>
-            <p>Operate through ChatGPT, Codex, the bapX connector, and the generated AVP proxy hostname.</p>
+            <p>Operate through ChatGPT, Codex, the bapX connector, and the generated ACM proxy hostname.</p>
           </div>
         </div>
       </section>
