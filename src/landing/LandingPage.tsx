@@ -94,7 +94,6 @@ function SiteHeader({ contactLabel = 'Contact' }: { contactLabel?: string }) {
         <a href="https://blog.bapx.in/opensource">Open source</a>
         <a href="https://blog.bapx.in/release">Release</a>
         <a href="https://mediahub.bapx.in">Media Hub</a>
-        <a href="https://bapx.in/login">Sign in</a>
       </nav>
       <div className="header-actions">
         <a className="header-cta secondary-header-cta" href="https://bapx.in/contact">
