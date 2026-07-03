@@ -6,6 +6,9 @@ flowchart LR
   Styles["src/styles.css design system"]
   Design["DESIGN.md bapX visual rules"]
   Agents["AGENTS.md agent rules"]
+  RepoDocs["docs/index.md repo implementation notes"]
+  BrandDocs["docs/brand-assets.md favicon and logo rules"]
+  Favicon["public/brand/bapx-fav-icon.svg"]
   Data["src/data/ecosystem.db.json"]
   Schema["src/data/ecosystem.schema.json"]
   MapGen["scripts/generate-map.mjs"]
@@ -17,6 +20,9 @@ flowchart LR
   Landing --> Data
   Data --> Schema
   Design --> Styles
+  RepoDocs --> BrandDocs
+  BrandDocs --> Favicon
+  Favicon --> App
   Agents --> Map
   MapGen --> Map
   MapGen --> Data

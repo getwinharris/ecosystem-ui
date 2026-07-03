@@ -46,6 +46,11 @@ npm test
 
 Do not edit `map.mmd` by hand. Change `scripts/generate-map.mjs` or the JSON data, then regenerate.
 
+## Brand Assets
+
+Browser-visible brand asset rules live in [docs/brand-assets.md](docs/brand-assets.md). The favicon
+must preserve a white circular backing so the `x.` mark stays readable in browser tabs and bookmarks.
+
 ## Development
 
 ```bash
