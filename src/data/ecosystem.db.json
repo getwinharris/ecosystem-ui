@@ -103,6 +103,17 @@
     { "label": "Blogs", "href": "https://blog.bapx.in" },
     { "label": "Settings", "href": "https://platform.bapx.in/settings" }
   ],
+  "adminNav": [
+    { "label": "Control", "href": "https://admin.bapx.in" },
+    { "label": "Files", "href": "https://admin.bapx.in/files" },
+    { "label": "Codex", "href": "https://admin.bapx.in/codex" },
+    { "label": "Maps", "href": "https://admin.bapx.in/maps" },
+    { "label": "Users", "href": "https://admin.bapx.in/users" },
+    { "label": "Billing", "href": "https://admin.bapx.in/billing" },
+    { "label": "Team", "href": "https://admin.bapx.in/team" },
+    { "label": "Workflows", "href": "https://admin.bapx.in/workflows" },
+    { "label": "Settings", "href": "https://admin.bapx.in/settings" }
+  ],
   "adminTabs": [
     { "label": "General" },
     { "label": "OAuth" },
@@ -112,8 +123,67 @@
     { "label": "Maps" },
     { "label": "OKF" }
   ],
+  "ecosystemBackend": {
+    "name": "bapX ecosystem backend",
+    "runtime": "Node.js + TypeScript",
+    "dataStore": "JSON files with documented JSON Schema",
+    "policy": "Do not use bapXvm as the primary bapx.in ecosystem backend. Build a first-party Node.js/TypeScript backend with JSON-first records, schemas, file indexes, maps, workflow state, users, OAuth, and billing contracts. SQL/vector systems can exist only behind generated JSON contracts if they are ever introduced later.",
+    "root": "/root/bapx.in",
+    "packagesRoot": "/root/bapx.in/project-packages-git"
+  },
+  "billingProviders": [
+    {
+      "id": "razorpay",
+      "name": "Razorpay",
+      "status": "primary-planned",
+      "scope": "India-first subscriptions, invoices, payment links, customer billing state, webhook reconciliation, and admin billing review."
+    }
+  ],
+  "workspaceProjects": [
+    {
+      "name": "ecosystem-ui",
+      "path": "/root/bapx.in/project-packages-git/ecosystem-ui",
+      "role": "Public bapX UI, platform shell, admin shell, docs/blog/mediahub static surfaces."
+    },
+    {
+      "name": "bapXvm",
+      "path": "/root/bapx.in/project-packages-git/bapXvm",
+      "role": "AVM package repo for customer-owned VPS installs; not the primary bapx.in ecosystem backend."
+    },
+    {
+      "name": "workspace map",
+      "path": "/root/bapx.in/map.mmd",
+      "role": "Combined ecosystem map across repos, domains, routes, package boundaries, and file roots."
+    }
+  ],
+  "adminPanels": [
+    {
+      "title": "Files",
+      "summary": "Inspect /root/bapx.in, project-package-git repos, docs, maps, schemas, package files, and deploy artifacts."
+    },
+    {
+      "title": "Codex terminal",
+      "summary": "Open project-aware Codex CLI/terminal sessions for ecosystem maintenance, deploys, map generation, and repo checks."
+    },
+    {
+      "title": "Whole ecosystem map",
+      "summary": "Read /root/bapx.in/map.mmd plus each repo map before changing routing, backend contracts, schemas, docs, or automations."
+    },
+    {
+      "title": "Users and OAuth",
+      "summary": "Manage unified users, OAuth providers, roles, team access, project membership, and app entitlements."
+    },
+    {
+      "title": "Razorpay billing",
+      "summary": "Manage billing records, subscriptions, invoices, payment links, webhook reconciliation, and plan state through Razorpay-backed contracts."
+    },
+    {
+      "title": "Team workflows",
+      "summary": "Run internal bapX team operations, client approvals, job tracking, automations, content workflow, and ecosystem build tasks."
+    }
+  ],
   "metrics": [
-    { "label": "Active products", "value": "5", "hint": "Platform, AVM, Media Hub, Domains, API/MCP" },
+    { "label": "Active products", "value": "4", "hint": "Platform, AVM, Media Hub, API/MCP" },
     { "label": "MCP gateway", "value": "api.bapx.in/mcp", "hint": "Shared agent gateway" },
     { "label": "Trial window", "value": "60 days", "hint": "Self-hosted AVM evaluation" },
     { "label": "Runtime proxy", "value": "ACM********", "hint": "Generated per customer VM" }
@@ -274,9 +344,9 @@
       "href": "#api"
     },
     {
-      "title": "Token Plan",
+      "title": "Products",
       "copy": "Subscription key, user OAuth, Codex/OpenAI token usage, trial access, quotas, and team assignment rules.",
-      "href": "#token-plan"
+      "href": "#products"
     },
     {
       "title": "Pricing",

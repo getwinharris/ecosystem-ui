@@ -50,7 +50,7 @@ const hostRoutes = [
   ['bapx.in', 'LandingPage', 'Public ecosystem root and business entry'],
   ['www.bapx.in', 'LandingPage', 'Public ecosystem root alias'],
   ['platform.bapx.in', 'PlatformPage', 'Unified user dashboard'],
-  ['admin.bapx.in', 'AdminPage', 'Cross-domain admin control surface'],
+  ['admin.bapx.in', 'AdminPage', 'Internal ecosystem admin for files, Codex, maps, users, billing, workflows'],
   ['mediahub.bapx.in', 'MediaHubPage', 'Media Hub portfolio and services'],
   ['blog.bapx.in', 'BlogPage', 'Blog categories and posts'],
   ['docs.bapx.in', 'DocsPage', 'Developer docs for all products'],
@@ -90,6 +90,38 @@ for (const product of db.products) {
   if (product.id === 'platform') lines.push(`    ${id} --> PlatformPage`);
   if (product.id === 'avm') lines.push(`    ${id} --> AvmLandingPage`);
   if (product.id === 'mediahub') lines.push(`    ${id} --> MediaHubPage`);
+}
+lines.push('  end', '');
+
+lines.push('  subgraph AdminOps["admin.bapx.in internal operations"]');
+for (const item of db.adminPanels) {
+  const id = nodeId('AdminPanel', item.title);
+  lines.push(`    ${id}["${escapeLabel(item.title)}<br/>${escapeLabel(item.summary)}"]`);
+  lines.push(`    Data --> ${id}`);
+  lines.push(`    ${id} --> AdminPage`);
+}
+for (const project of db.workspaceProjects) {
+  const id = nodeId('WorkspaceProject', project.name);
+  lines.push(`    ${id}["${escapeLabel(project.name)}<br/>${escapeLabel(project.path)}"]`);
+  lines.push(`    ${id} --> AdminPage`);
+}
+lines.push('  end', '');
+
+lines.push('  subgraph BackendPolicy["bapX ecosystem backend policy"]');
+lines.push(
+  `    EcosystemBackend["${escapeLabel(db.ecosystemBackend.name)}<br/>${escapeLabel(db.ecosystemBackend.runtime)}<br/>${escapeLabel(db.ecosystemBackend.dataStore)}"]`
+);
+lines.push('    EcosystemBackend --> AdminPage');
+lines.push('    EcosystemBackend --> PlatformPage');
+lines.push('    Data --> EcosystemBackend');
+lines.push('  end', '');
+
+lines.push('  subgraph Billing["Billing providers"]');
+for (const provider of db.billingProviders) {
+  const id = nodeId('Billing', provider.id);
+  lines.push(`    ${id}["${escapeLabel(provider.name)}<br/>${escapeLabel(provider.status)}"]`);
+  lines.push(`    ${id} --> AdminPage`);
+  lines.push(`    ${id} --> PlatformPage`);
 }
 lines.push('  end', '');
 
@@ -141,7 +173,7 @@ lines.push(
   '  McpGateway["api.bapx.in/mcp"]',
   '  AvmRuntime["ACM random8.vm.bapx.in generated runtime hosts"]',
   '  PlatformPage --> ApiGateway',
-  '  AdminPage --> ApiGateway',
+  '  AdminPage --> Data',
   '  AvmLandingPage --> ApiGateway',
   '  AvmLandingPage --> McpGateway',
   '  AvmLandingPage --> AvmRuntime',

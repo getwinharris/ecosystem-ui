@@ -64,8 +64,35 @@ type EcosystemDb = {
     label: string;
     href: string;
   }>;
+  adminNav: Array<{
+    label: string;
+    href: string;
+  }>;
   adminTabs: Array<{
     label: string;
+  }>;
+  ecosystemBackend: {
+    name: string;
+    runtime: string;
+    dataStore: string;
+    policy: string;
+    root: string;
+    packagesRoot: string;
+  };
+  billingProviders: Array<{
+    id: string;
+    name: string;
+    status: string;
+    scope: string;
+  }>;
+  workspaceProjects: Array<{
+    name: string;
+    path: string;
+    role: string;
+  }>;
+  adminPanels: Array<{
+    title: string;
+    summary: string;
   }>;
   metrics: Array<{
     label: string;

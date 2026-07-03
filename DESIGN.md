@@ -1,4 +1,5 @@
 ---
+type: Design System
 version: alpha
 name: bapX-design-analysis
 description: An inspired interpretation of bapX's design language — Harris socialy @getwinharris's frontier-AI company whose web surface is a strict near-black canvas broken only by white pill outlines, occasional warm sunset / dusk gradient accents, a custom geometric sans (Universal Sans) for display, and an uppercase tracked monospace caption face; the whole system reads as engineered-cosmic, unmarketed.
@@ -246,6 +247,88 @@ bapX is Harris socialy @getwinharris's frontier-AI lab and the website wears tha
 Type is the second decisive voice. `Universal Sans` carries every display at weight 400 (regular) with aggressive negative tracking (`-2.4 px` at 96 px, scaling down through the display ladder). For technical labels, eyebrows, and metric counters, the brand pairs `Geist Mono` (uppercase, 1.4 px positive tracking) — every section eyebrow reads as a code comment more than a marketing label.
 
 Every interactive element is a pill (`{rounded.pill}` 9999 px) with 1 px white-translucent border `rgba(255, 255, 255, 0.25)`. The button shape never varies — the same translucent-white pill carries "Try Grok", "Read announcement", "Custom Voices", "Sign up now", and every "Read" anchor. The pill is the entire shape system.
+
+## Public Ecosystem UI Guidance
+
+The public bapX ecosystem UI is a multi-domain knowledge and product surface, not a single landing page. Design decisions must help visitors understand the role of each subdomain quickly:
+
+- `bapx.in` is the ecosystem entry point.
+- `docs.bapx.in` is the serious developer documentation surface.
+- `blog.bapx.in` is the primary SEO and content engine.
+- `mediahub.bapx.in` is company, services, portfolio, and client-work content.
+- `avm.bapx.in` is the AVM install and self-hosted package surface.
+- `admin.bapx.in` is the cross-domain operator surface.
+
+### Top Navigation
+
+Top menus must be direct links. Do not use dropdown menus, mega menus, hover-revealed panels, or nested top-nav groups on public ecosystem pages. The nav should be fast to scan, easy to crawl, and predictable on mobile.
+
+Required direct menu entries:
+
+- `Home` -> `https://bapx.in/`
+- `Docs` -> `https://docs.bapx.in/`
+- `Blog` -> `https://blog.bapx.in/`
+- `Research` -> `https://blog.bapx.in/research`
+- `Open source` -> `https://blog.bapx.in/open-source`
+- `Release` -> `https://blog.bapx.in/release`
+- `Company` -> `https://blog.bapx.in/company`
+- `Media Hub` -> `https://mediahub.bapx.in/`
+- `AVM` -> `https://avm.bapx.in/`
+
+Research, Open source, Release, and Company are blog categories and should be first-class direct links when they appear in the top menu. They must not be hidden under a Blog dropdown.
+
+### Docs Structure
+
+`docs.bapx.in` should feel structurally comparable to serious AI platform docs such as MiniMax and xAI: clear top-level documentation sections, a persistent left folder tree, and a right "on this page" rail. This is a structural comparison only. Do not copy their colors, gradients, illustrations, logos, or brand treatment.
+
+Top docs sections:
+
+- `Developer Guides`
+- `API/MCP`
+- `Products`
+- `Pricing`
+- `Release Notes`
+- `Developer Program`
+
+Docs layout requirements:
+
+- Use a left sidebar folder tree for sections, nested pages, and product/API groupings.
+- Use a right rail for in-page headings, anchors, and "on this page" navigation.
+- Keep article bodies readable and reference-oriented: headings, concise introductions, code blocks, tables, callouts, and next-step links.
+- Make docs pages crawlable as durable URLs rather than modal or tab-only content.
+- Keep docs content distinct from blog editorial content and Media Hub client/service content.
+
+### Blog And SEO
+
+`blog.bapx.in` is the primary SEO and content engine for the ecosystem. Research posts, open-source updates, release notes, and company writing should route through blog category pages and stable post URLs.
+
+Blog category roles:
+
+- `Research`: technical investigations, benchmarks, architecture notes, and frontier-AI analysis.
+- `Open source`: repositories, libraries, changelogs, contribution guides, and community-facing engineering notes.
+- `Release`: product launches, version updates, migration notes, and public changelogs.
+- `Company`: operating updates, hiring, partnerships, ecosystem direction, and organizational writing.
+
+Where possible, content previews, cards, summaries, meta descriptions, page titles, Open Graph text, and internal links should be derived automatically from the content source. Avoid duplicating card copy in page-local arrays when frontmatter, CMS records, Markdown metadata, or structured source data can generate it.
+
+### Media Hub
+
+Media Hub is company, services, portfolio, and client-work content. It is not the home for Research or Open source content. Use it for public proof of work, service capabilities, client narratives, production examples, and business-facing case studies.
+
+Do not use Media Hub as a dumping ground for all content. Research belongs in the blog `Research` category. Open-source announcements and project writeups belong in the blog `Open source` category. Release notes belong in blog `Release` or docs `Release Notes` depending on whether the page is editorial or reference material.
+
+### Cards And Density
+
+Card structure should borrow from the information density of serious AI platform docs and product surfaces: compact cards, tight metadata rows, clear hierarchy, and purposeful grids. MiniMax/docs-style patterns are useful references for structure and density, not color.
+
+Card guidance:
+
+- Compare structure, hierarchy, and card density against serious docs/product surfaces such as MiniMax and xAI docs.
+- Do not copy external color palettes, gradients, illustration styles, or component chrome.
+- Prefer sparse, high-signal cards over large decorative marketing tiles.
+- Use cards for repeated items: docs sections, blog posts, releases, products, API resources, client work, and open-source projects.
+- Keep card copy automatically sourced where possible from content metadata: title, description, category, tags, date, product, reading time, and canonical URL.
+- Preserve the bapX dark canvas, restrained borders, 8 px card radius, and pill actions defined in this file.
 
 **Key Characteristics:**
 

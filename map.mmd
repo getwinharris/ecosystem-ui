@@ -28,7 +28,7 @@ flowchart LR
     Host_www_bapx_in --> LandingPage
     Host_platform_bapx_in["platform.bapx.in<br/>Unified user dashboard"]
     Host_platform_bapx_in --> PlatformPage
-    Host_admin_bapx_in["admin.bapx.in<br/>Cross-domain admin control surface"]
+    Host_admin_bapx_in["admin.bapx.in<br/>Internal ecosystem admin for files, Codex, maps, users, billing, workflows"]
     Host_admin_bapx_in --> AdminPage
     Host_mediahub_bapx_in["mediahub.bapx.in<br/>Media Hub portfolio and services"]
     Host_mediahub_bapx_in --> MediaHubPage
@@ -64,6 +64,46 @@ flowchart LR
     Product_mediahub --> MediaHubPage
     Product_api["API and MCP<br/>api.bapx.in<br/>gateway"]
     Data --> Product_api
+  end
+
+  subgraph AdminOps["admin.bapx.in internal operations"]
+    AdminPanel_files["Files<br/>Inspect /root/bapx.in, project-package-git repos, docs, maps, schemas, package files, and deploy artifacts."]
+    Data --> AdminPanel_files
+    AdminPanel_files --> AdminPage
+    AdminPanel_codex_terminal["Codex terminal<br/>Open project-aware Codex CLI/terminal sessions for ecosystem maintenance, deploys, map generation, and repo checks."]
+    Data --> AdminPanel_codex_terminal
+    AdminPanel_codex_terminal --> AdminPage
+    AdminPanel_whole_ecosystem_map["Whole ecosystem map<br/>Read /root/bapx.in/map.mmd plus each repo map before changing routing, backend contracts, schemas, docs, or automations."]
+    Data --> AdminPanel_whole_ecosystem_map
+    AdminPanel_whole_ecosystem_map --> AdminPage
+    AdminPanel_users_and_oauth["Users and OAuth<br/>Manage unified users, OAuth providers, roles, team access, project membership, and app entitlements."]
+    Data --> AdminPanel_users_and_oauth
+    AdminPanel_users_and_oauth --> AdminPage
+    AdminPanel_razorpay_billing["Razorpay billing<br/>Manage billing records, subscriptions, invoices, payment links, webhook reconciliation, and plan state through Razorpay-backed contracts."]
+    Data --> AdminPanel_razorpay_billing
+    AdminPanel_razorpay_billing --> AdminPage
+    AdminPanel_team_workflows["Team workflows<br/>Run internal bapX team operations, client approvals, job tracking, automations, content workflow, and ecosystem build tasks."]
+    Data --> AdminPanel_team_workflows
+    AdminPanel_team_workflows --> AdminPage
+    WorkspaceProject_ecosystem_ui["ecosystem-ui<br/>/root/bapx.in/project-packages-git/ecosystem-ui"]
+    WorkspaceProject_ecosystem_ui --> AdminPage
+    WorkspaceProject_bapxvm["bapXvm<br/>/root/bapx.in/project-packages-git/bapXvm"]
+    WorkspaceProject_bapxvm --> AdminPage
+    WorkspaceProject_workspace_map["workspace map<br/>/root/bapx.in/map.mmd"]
+    WorkspaceProject_workspace_map --> AdminPage
+  end
+
+  subgraph BackendPolicy["bapX ecosystem backend policy"]
+    EcosystemBackend["bapX ecosystem backend<br/>Node.js + TypeScript<br/>JSON files with documented JSON Schema"]
+    EcosystemBackend --> AdminPage
+    EcosystemBackend --> PlatformPage
+    Data --> EcosystemBackend
+  end
+
+  subgraph Billing["Billing providers"]
+    Billing_razorpay["Razorpay<br/>primary-planned"]
+    Billing_razorpay --> AdminPage
+    Billing_razorpay --> PlatformPage
   end
 
   subgraph Auth["Central OAuth inventory"]
@@ -112,9 +152,9 @@ flowchart LR
     Docs_api["Docs: API"]
     Data --> Docs_api
     Docs_api --> DocsPage
-    Docs_token_plan["Docs: Token Plan"]
-    Data --> Docs_token_plan
-    Docs_token_plan --> DocsPage
+    Docs_products["Docs: Products"]
+    Data --> Docs_products
+    Docs_products --> DocsPage
     Docs_pricing["Docs: Pricing"]
     Data --> Docs_pricing
     Docs_pricing --> DocsPage
@@ -167,7 +207,7 @@ flowchart LR
   McpGateway["api.bapx.in/mcp"]
   AvmRuntime["ACM random8.vm.bapx.in generated runtime hosts"]
   PlatformPage --> ApiGateway
-  AdminPage --> ApiGateway
+  AdminPage --> Data
   AvmLandingPage --> ApiGateway
   AvmLandingPage --> McpGateway
   AvmLandingPage --> AvmRuntime

@@ -8,21 +8,6 @@ import {
 } from '../data/ecosystem';
 import type React from 'react';
 
-type MenuItem = {
-  title: string;
-  copy: string;
-  href: string;
-};
-
-type MenuGroup = {
-  label: string;
-  items?: MenuItem[];
-  sections?: Array<{
-    title: string;
-    items: MenuItem[];
-  }>;
-};
-
 function getProductPrefix() {
   if (typeof window === 'undefined') {
     return '';
@@ -79,33 +64,16 @@ function SiteHeader({ contactLabel = 'Contact' }: { contactLabel?: string }) {
         <BapxBrand />
       </a>
       <nav className="site-nav" aria-label="Primary navigation">
-        <a href="https://platform.bapx.in">Platform</a>
+        <a href="https://bapx.in">Home</a>
+        <a href="https://avm.bapx.in">AVM</a>
         <a href="https://docs.bapx.in">Docs</a>
-        {menuGroups.map((group) => (
-          <details className="nav-menu" key={group.label}>
-            <summary>{group.label}</summary>
-            <div className="nav-panel">
-              {group.sections
-                ? group.sections.map((section) => (
-                    <div className="nav-section" key={`${group.label}-${section.title}`}>
-                      <span className="nav-section-label">{section.title}</span>
-                      {section.items.map((item) => (
-                        <a href={item.href} key={`${group.label}-${section.title}-${item.title}`}>
-                          <strong>{item.title}</strong>
-                          <span>{item.copy}</span>
-                        </a>
-                      ))}
-                    </div>
-                  ))
-                : group.items?.map((item) => (
-                    <a href={item.href} key={`${group.label}-${item.title}`}>
-                      <strong>{item.title}</strong>
-                      <span>{item.copy}</span>
-                    </a>
-                  ))}
-            </div>
-          </details>
-        ))}
+        <a href="https://docs.bapx.in/api">API/MCP</a>
+        <a href="https://docs.bapx.in/pricing">Pricing</a>
+        <a href="https://blog.bapx.in">Blog</a>
+        <a href="https://blog.bapx.in/research">Research</a>
+        <a href="https://blog.bapx.in/opensource">Open source</a>
+        <a href="https://blog.bapx.in/release">Release</a>
+        <a href="https://mediahub.bapx.in">Media Hub</a>
         <a href="https://bapx.in/login">Sign in</a>
       </nav>
       <a className="header-cta" href={contactLabel === 'Sign in' ? 'https://bapx.in/login' : 'mailto:info@bapx.in'}>
@@ -115,196 +83,61 @@ function SiteHeader({ contactLabel = 'Contact' }: { contactLabel?: string }) {
   );
 }
 
-const menuGroups: MenuGroup[] = [
-  {
-    label: 'Research',
-    items: [
-      {
-        title: 'Architecture map',
-        copy: 'How packages, routes, schemas, MCP, docs, and skills connect.',
-        href: 'https://docs.bapx.in',
-      },
-      {
-        title: 'Research blog',
-        copy: 'Research notes, architecture direction, model work, and agent framework thinking.',
-        href: 'https://blog.bapx.in/research',
-      },
-      {
-        title: 'Security notes',
-        copy: 'Installer, secrets, routing, OAuth, and webhook hardening work.',
-        href: 'https://docs.bapx.in',
-      },
-      ...openSourceProjects.map((project) => ({
-        title: project.title,
-        copy: project.copy,
-        href: project.href,
-      })),
-    ],
-  },
-  {
-    label: 'Products',
-    items: [
-      {
-        title: 'AVM',
-        copy: 'Self-hosted backend runtime for customer-owned VPS installs.',
-        href: 'https://avm.bapx.in',
-      },
-      {
-        title: 'Platform',
-        copy: 'Unified login, products, subscriptions, billing, and app access.',
-        href: 'https://platform.bapx.in',
-      },
-      {
-        title: 'Bapx Media Hub',
-        copy: 'Custom media, business presence, SMM, ads, SEO, and automation services.',
-        href: 'https://mediahub.bapx.in',
-      },
-      {
-        title: 'API and MCP',
-        copy: 'Shared API gateway and agent-facing MCP endpoint.',
-        href: 'https://api.bapx.in/mcp',
-      },
-    ],
-  },
-  {
-    label: 'Open source',
-    items: [
-      {
-        title: 'Open source blog',
-        copy: 'Project notes and contribution context for public bapX repositories.',
-        href: 'https://blog.bapx.in/opensource',
-      },
-      ...openSourceProjects.map((project) => ({
-        title: project.title,
-        copy: project.copy,
-        href: project.href,
-      })),
-    ],
-  },
-  {
-    label: 'Blogs',
-    items: [
-      {
-        title: 'All posts',
-        copy: 'Company, product, research, open source, and engineering posts.',
-        href: 'https://blog.bapx.in',
-      },
-      {
-        title: 'Research',
-        copy: 'Model, agent framework, architecture, and implementation research notes.',
-        href: 'https://blog.bapx.in/research',
-      },
-      {
-        title: 'Open source',
-        copy: 'Public repositories, issues, contribution routes, and release context.',
-        href: 'https://blog.bapx.in/opensource',
-      },
-      {
-        title: 'Company',
-        copy: 'Company updates, service notes, and public announcements.',
-        href: 'https://blog.bapx.in/company',
-      },
-      {
-        title: 'Release',
-        copy: 'Release notes for product, docs, API, MCP, and site changes.',
-        href: 'https://blog.bapx.in/release',
-      },
-    ],
-  },
-  {
-    label: 'APIs',
-    items: [
-      {
-        title: 'API gateway',
-        copy: 'Ecosystem API entry point at api.bapx.in.',
-        href: 'https://api.bapx.in',
-      },
-      {
-        title: 'SDK docs',
-        copy: 'Database, auth, storage, functions, realtime, and AI contracts.',
-        href: 'https://docs.bapx.in',
-      },
-      {
-        title: 'AVM runtime API',
-        copy: 'Backend services exposed by each self-hosted AVM runtime.',
-        href: 'https://avm.bapx.in',
-      },
-    ],
-  },
-  {
-    label: 'MCPs',
-    items: [
-      {
-        title: 'MCP gateway',
-        copy: 'Agent-facing gateway at api.bapx.in/mcp.',
-        href: 'https://api.bapx.in/mcp',
-      },
-      {
-        title: 'Codex tools',
-        copy: 'Install, inspect, deploy, and operate AVM from agents.',
-        href: 'https://docs.bapx.in',
-      },
-      {
-        title: 'Tool contracts',
-        copy: 'Shared schemas and docs used by agent workflows.',
-        href: 'https://docs.bapx.in',
-      },
-    ],
-  },
-  {
-    label: 'Media Hub',
-    sections: [
-      {
-        title: 'Services',
-        items: [
-          {
-            title: 'Client portfolio',
-            copy: 'Selected web, commerce, healthcare, clinic, and social media portfolio work.',
-            href: 'https://mediahub.bapx.in',
-          },
-          {
-            title: 'Web products',
-            copy: 'WordPress, WooCommerce, Shopify, custom apps, and business websites.',
-            href: 'https://mediahub.bapx.in/#media-clients',
-          },
-          {
-            title: 'Online funnels',
-            copy: 'Web and social conversion systems for full business presence.',
-            href: 'https://mediahub.bapx.in/#media-clients',
-          },
-          {
-            title: 'Social management',
-            copy: 'Content and social operations for brands that do not need a website.',
-            href: 'https://mediahub.bapx.in/#media-clients',
-          },
-        ],
-      },
-      {
-        title: 'Selected clients',
-        items: mediaHubClients.map((client) => ({
-          title: client.name,
-          copy: client.summary,
-          href: client.links[0]?.href ?? '#media-clients',
-        })),
-      },
-      {
-        title: 'Bapx Media Hub',
-        items: [
-          {
-            title: 'Instagram',
-            copy: 'Bapx Media Hub social presence and campaign work.',
-            href: 'https://www.instagram.com/bapxmediahub/',
-          },
-          {
-            title: 'Facebook',
-            copy: 'Bapx Media Hub page, updates, and client-facing social activity.',
-            href: 'https://www.facebook.com/bapxmediahub/',
-          },
-        ],
-      },
-    ],
-  },
-];
+function AdminSidebar({ active = 'Control' }: { active?: string }) {
+  return (
+    <aside className="admin-sidebar">
+      <div className="platform-project-select">
+        <strong>bapX operator</strong>
+        <span>⌄</span>
+      </div>
+      <label className="platform-search">
+        <span>Find</span>
+        <input aria-label="Search admin" />
+      </label>
+      <nav className="platform-nav" aria-label="Admin navigation">
+        {ecosystemDb.adminNav.map((item) => (
+          <a className={active === item.label ? 'active' : ''} href={item.href} key={`admin-nav-${item.label}`}>
+            <span aria-hidden="true">{item.label.slice(0, 1)}</span>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      <div className="platform-sidebar-footer">
+        <div className="platform-cleanup-card">
+          <strong>Internal control room</strong>
+          <p>Files, Codex sessions, maps, users, billing, team workflow, and automation state.</p>
+        </div>
+        <div className="platform-org">
+          <span>B</span>
+          <div>
+            <strong>{ecosystemDb.identity.currentUser.name}</strong>
+            <small>{ecosystemDb.identity.currentUser.role}</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+function AdminShell({ children }: { children: React.ReactNode }) {
+  return (
+    <main className="admin-shell">
+      <AdminSidebar />
+      <section className="platform-main">
+        <div className="platform-title-row">
+          <div>
+            <p className="mono-label">admin.bapx.in</p>
+            <h1>Ecosystem Admin</h1>
+          </div>
+          <a className="admin-map-pill" href="/root-map">
+            /root/bapx.in/map.mmd
+          </a>
+        </div>
+        {children}
+      </section>
+    </main>
+  );
+}
 
 function PlatformSidebar({ active = 'Home' }: { active?: string }) {
   return (
@@ -448,21 +281,57 @@ export function PlatformPage() {
 
 export function AdminPage() {
   return (
-    <PlatformShell active="Settings" title="Admin">
-      <div className="settings-tabs" role="tablist" aria-label="Admin sections">
-        {ecosystemDb.adminTabs.map((tab, index) => (
-          <button className={index === 0 ? 'active' : ''} key={tab.label} type="button">
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
+    <AdminShell>
+      <section className="admin-hero-panel">
+        <div>
+          <span className="mono-label">Internal only</span>
+          <h2>Manage the bapX filesystem, maps, Codex work, users, billing, and team automation.</h2>
+          <p>{ecosystemDb.ecosystemBackend.policy}</p>
+        </div>
+        <div className="admin-terminal-card">
+          <span>codex terminal</span>
+          <code>cd {ecosystemDb.ecosystemBackend.root}</code>
+          <code>npm test && npm run map:repo</code>
+          <code>project-packages-git/*</code>
+        </div>
+      </section>
       <section className="admin-grid">
         <article className="settings-card">
-          <h2>Central login</h2>
+          <h2>Workspace files and projects</h2>
           <p>
-            OAuth providers stay centralized at api.bapx.in so platform, AVM, blogs, billing, and
-            future products share one account identity.
+            Admin starts from the real VPS layout, not a product catalog. The whole ecosystem map
+            points agents to the right repo, docs, schemas, and package boundary before work starts.
+          </p>
+          <div className="admin-list">
+            {ecosystemDb.workspaceProjects.map((project) => (
+              <div key={`admin-project-${project.name}`}>
+                <span>{project.path}</span>
+                <strong>{project.name}</strong>
+                <small>{project.role}</small>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="settings-card">
+          <h2>Codex, maps, and workflow panels</h2>
+          <p>These are the internal admin modules that should become backed by JSON records and schemas.</p>
+          <div className="admin-panel-grid">
+            {ecosystemDb.adminPanels.map((panel) => (
+              <div className="admin-module-card" key={`admin-panel-${panel.title}`}>
+                <span>{panel.title}</span>
+                <p>{panel.summary}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="settings-card">
+          <h2>Unified users and OAuth</h2>
+          <p>
+            OAuth providers stay centralized for platform users, admin operators, AVM trials, and
+            future products. Admin owns provider setup and role assignment; platform only exposes
+            the signed-in customer view.
           </p>
           <div className="provider-table">
             {ecosystemDb.oauthProviders.map((provider) => (
@@ -479,14 +348,18 @@ export function AdminPage() {
         </article>
 
         <article className="settings-card">
-          <h2>Blog and docs control</h2>
-          <p>Posts, categories, release notes, and docs sections are JSON-backed until the API layer is live.</p>
+          <h2>Razorpay billing control</h2>
+          <p>
+            Billing should use Razorpay-backed JSON records for plans, subscriptions, invoices,
+            payment links, webhook reconciliation, and account entitlements.
+          </p>
           <div className="admin-list">
-            {blogPosts.slice(0, 5).map((post) => (
-              <a href={post.href} key={`admin-blog-${post.title}`}>
-                <span>{post.category}</span>
-                <strong>{post.title}</strong>
-              </a>
+            {ecosystemDb.billingProviders.map((provider) => (
+              <div key={`billing-provider-${provider.id}`}>
+                <span>{provider.status}</span>
+                <strong>{provider.name}</strong>
+                <small>{provider.scope}</small>
+              </div>
             ))}
           </div>
         </article>
@@ -510,7 +383,7 @@ export function AdminPage() {
           </div>
         </article>
       </section>
-    </PlatformShell>
+    </AdminShell>
   );
 }
 
@@ -577,7 +450,7 @@ export function LandingPage() {
       <section className="contact-section">
         <h2>Bring your business online with a team that can build, run, and improve it.</h2>
           <p>
-            For public technical docs, APIs, MCP, open source, AVM, domains, and ecosystem
+            For public technical docs, APIs, MCP, open source, AVM, and ecosystem
             architecture, use the product and docs surfaces. The root site stays focused on what
             bapX does for businesses.
           </p>
@@ -589,7 +462,7 @@ export function LandingPage() {
       <footer className="site-footer">
         <BapxBrand className="footer-brand" />
         <a href="https://docs.bapx.in">Docs</a>
-        <a href="https://platform.bapx.in">Platform</a>
+        <a href="https://bapx.in/login">Sign in</a>
         <a href="mailto:info@bapx.in">info@bapx.in</a>
       </footer>
     </main>
@@ -604,7 +477,7 @@ export function MediaHubPage() {
       <section className="hero-section ecosystem-hero">
         <div className="hero-copy">
           <p className="mono-label">mediahub.bapx.in</p>
-          <h1>Web, social, content, and business presence managed around each client</h1>
+          <h1>Company services, client work, and business presence managed around each client</h1>
           <p>
             Bapx Media Hub covers websites, ecommerce, funnels, social media, ads, SEO, content,
             campaigns, automations, and custom business systems based on the client&apos;s actual
@@ -698,6 +571,16 @@ export function BlogPage() {
           : 'All';
   const posts =
     activeCategory === 'All' ? blogPosts : blogPosts.filter((post) => post.category === activeCategory);
+  const blogHeroTitle =
+    activeCategory === 'All'
+      ? 'Blog, research, open source, release notes, and company updates'
+      : activeCategory === 'Open source'
+        ? 'Open source projects and contribution notes'
+        : `${activeCategory} posts`;
+  const blogHeroCopy =
+    activeCategory === 'Open source'
+      ? 'Public bapX repositories, project notes, contribution paths, and research-adjacent work live here as blog-driven SEO content.'
+      : 'The blog is the liquid publishing surface for research, open source, release notes, company updates, product notes, maps, and long-form markdown-style writing.';
 
   return (
     <main className="landing-page">
@@ -706,12 +589,8 @@ export function BlogPage() {
       <section className="hero-section ecosystem-hero blog-hero">
         <div className="hero-copy">
           <p className="mono-label">bapX blog</p>
-          <h1>Research, open source, product notes, and company updates</h1>
-          <p>
-            The blog separates public writing by category so research, open-source work, product
-            updates, engineering notes, and Media Hub articles can grow without turning the home
-            page into a document index.
-          </p>
+          <h1>{blogHeroTitle}</h1>
+          <p>{blogHeroCopy}</p>
           <div className="category-tabs" aria-label="Blog categories">
             <a className={activeCategory === 'All' ? 'active' : ''} href="/">
               All
@@ -733,6 +612,26 @@ export function BlogPage() {
       </section>
 
       <section className="blog-section">
+        {activeCategory === 'Open source' || activeCategory === 'All' ? (
+          <div className="section-heading compact">
+            <h2>Open source projects</h2>
+            <p>
+              These projects stay visible through the Open source blog category. Each project should
+              link to GitHub and grow through issue-first notes, releases, and implementation posts.
+            </p>
+          </div>
+        ) : null}
+        {activeCategory === 'Open source' || activeCategory === 'All' ? (
+          <div className="opensource-grid blog-project-grid">
+            {openSourceProjects.map((project) => (
+              <a className="opensource-card" href={project.href} key={`blog-project-${project.title}`}>
+                <span>Open source</span>
+                <strong>{project.title}</strong>
+                <p>{project.copy}</p>
+              </a>
+            ))}
+          </div>
+        ) : null}
         <div className="blog-grid">
           {posts.map((post) => (
             <a className="blog-card" href={post.href} key={`${post.category}-${post.title}`}>
@@ -757,52 +656,263 @@ export function BlogPage() {
   );
 }
 
+type DocsNavPage = {
+  title: string;
+  href: string;
+  summary: string;
+};
+
+type DocsNavGroup = {
+  title: string;
+  href: string;
+  pages: DocsNavPage[];
+};
+
+const docsNavGroups: DocsNavGroup[] = [
+  {
+    title: 'Developer Guides',
+    href: '/guides',
+    pages: [
+      {
+        title: 'Models and runtime overview',
+        href: '/guides/models-intro',
+        summary: 'How AVM, bapX platform, ChatGPT, Codex, API, and MCP fit together.',
+      },
+      {
+        title: 'Quickstart',
+        href: '/guides/quickstart',
+        summary: 'Create an account, choose the AVM package path, and connect a customer-owned VPS.',
+      },
+      {
+        title: 'Install AVM on a VPS',
+        href: '/guides/avm-install',
+        summary: 'Bootstrap the headless @bapX/vm runtime, secrets, proxy, logs, backups, and updates.',
+      },
+      {
+        title: 'Connect ChatGPT and Codex',
+        href: '/guides/connect-chatgpt-codex',
+        summary: 'Use ChatGPT and Codex as the agent interface instead of building a duplicate agent UI.',
+      },
+      {
+        title: 'Open source project guides',
+        href: '/guides/open-source-projects',
+        summary: 'Issue-first contribution flows for pak-it, map.mmd, x8Dsub-byte, and research repos.',
+      },
+    ],
+  },
+  {
+    title: 'API / MCP',
+    href: '/api',
+    pages: [
+      {
+        title: 'API overview',
+        href: '/api/api-overview',
+        summary: 'Gateway shape for api.bapx.in, auth, records, storage, functions, realtime, and billing.',
+      },
+      {
+        title: 'MCP gateway',
+        href: '/api/mcp',
+        summary: 'Agent-facing tool contracts exposed through api.bapx.in/mcp.',
+      },
+      {
+        title: 'Authentication',
+        href: '/api/authentication',
+        summary: 'Google, GitHub, OpenAI, and Apple OAuth plans plus session and callback rules.',
+      },
+      {
+        title: 'Errors and rate limits',
+        href: '/api/errors-rate-limits',
+        summary: 'Common response shapes, limits, retries, and operational signals.',
+      },
+    ],
+  },
+  {
+    title: 'Products',
+    href: '/products',
+    pages: [
+      {
+        title: 'AVM',
+        href: '/products/avm',
+        summary: 'The self-hosted package and customer-owned VPS runtime.',
+      },
+      {
+        title: 'Platform',
+        href: '/products/platform',
+        summary: 'Unified account, products, subscription, billing, apps, and API/MCP access.',
+      },
+      {
+        title: 'Media Hub',
+        href: '/products/mediahub',
+        summary: 'Company services and portfolio surface for client business operations.',
+      },
+      {
+        title: 'Token plan',
+        href: '/products/token-plan',
+        summary: 'Trial, subscription keys, OAuth session usage, Codex/OpenAI usage, and quota policy.',
+      },
+    ],
+  },
+  {
+    title: 'Pricing',
+    href: '/pricing',
+    pages: [
+      {
+        title: 'Pricing overview',
+        href: '/pricing/overview',
+        summary: '60-day AVM trial, $5/month self-hosted plan, $20/month white-label plan, and custom Media Hub work.',
+      },
+      {
+        title: 'Usage and billing',
+        href: '/pricing/usage-billing',
+        summary: 'How subscriptions, API usage, customer-owned VPS costs, and invoices should be represented.',
+      },
+    ],
+  },
+  {
+    title: 'Release Notes',
+    href: '/release-notes',
+    pages: [
+      {
+        title: 'Product releases',
+        href: '/release-notes/products',
+        summary: 'Changes across platform, AVM, docs, Media Hub, and the public ecosystem UI.',
+      },
+      {
+        title: 'API and MCP changes',
+        href: '/release-notes/api-mcp',
+        summary: 'Gateway, schema, SDK, MCP tool, migration, and security updates.',
+      },
+    ],
+  },
+  {
+    title: 'Developer Program',
+    href: '/developer-program',
+    pages: [
+      {
+        title: 'Contribution flow',
+        href: '/developer-program/contribution-flow',
+        summary: 'Read repo maps, use GitHub issues, branch from tracked work, validate, and land through PRs.',
+      },
+      {
+        title: 'Partner builds',
+        href: '/developer-program/partner-builds',
+        summary: 'How external projects, plugins, and client builds connect back to bapX contracts.',
+      },
+    ],
+  },
+];
+
+function normalizeDocsPath() {
+  if (typeof window === 'undefined') {
+    return '/guides';
+  }
+
+  const path = window.location.pathname.replace(/^\/docs/, '') || '/';
+  return path === '/' ? '/guides' : path;
+}
+
+function findActiveDocsGroup(path: string) {
+  return docsNavGroups.find((group) => path === group.href || path.startsWith(`${group.href}/`)) ?? docsNavGroups[0];
+}
+
 export function DocsPage() {
+  const activePath = normalizeDocsPath();
+  const activeGroup = findActiveDocsGroup(activePath);
+  const activePage = activeGroup.pages.find((page) => page.href === activePath) ?? activeGroup.pages[0];
+
   return (
-    <main className="landing-page">
+    <main className="landing-page docs-page">
       <SiteHeader contactLabel="Developer access" />
 
-      <section className="hero-section ecosystem-hero docs-hero">
-        <div className="hero-copy">
-          <p className="mono-label">docs.bapx.in</p>
-          <h1>Developer documentation for the bapX ecosystem</h1>
+      <section className="docs-header">
+        <div>
+          <span className="mono-label">docs.bapx.in</span>
+          <h1>Developer documentation</h1>
           <p>
-            One docs surface for AVM, APIs, MCP, SDKs, pricing, release notes, integrations,
-            developer programs, and implementation guides across bapX products.
+            Build against AVM, API, MCP, platform billing, release notes, and the public bapX project map
+            from one documentation system.
           </p>
-          <div className="hero-actions">
-            <a className="primary-action" href="#developer-guides">
-              Start with guides
-            </a>
-            <a className="secondary-action" href="#api">
-              API reference
-            </a>
-          </div>
         </div>
+        <label className="docs-search">
+          <span>Search docs</span>
+          <input aria-label="Search docs" placeholder="Search guides, API, MCP, pricing..." />
+        </label>
       </section>
 
-      <section className="docs-index-section">
-        <div className="docs-index-grid">
+      <nav className="docs-top-tabs" aria-label="Documentation sections">
+        {docsSections.map((section) => {
+          const sectionPath = section.href.replace('#', '/').replace('/token-plan', '/products');
+          const isActive =
+            activeGroup.title === section.title || (section.title === 'API' && activeGroup.title === 'API / MCP');
+          return (
+            <a className={isActive ? 'active' : ''} href={sectionPath} key={section.title}>
+              {section.title}
+            </a>
+          );
+        })}
+      </nav>
+
+      <section className="docs-shell">
+        <aside className="docs-sidebar">
           {docsSections.map((section) => (
-            <a className="docs-index-card" href={section.href} key={section.title}>
-              <span>{section.title}</span>
-              <strong>{section.title}</strong>
-              <p>{section.copy}</p>
+            <a
+              className={
+                activeGroup.title === section.title || (section.title === 'API' && activeGroup.title === 'API / MCP')
+                  ? 'active'
+                  : ''
+              }
+              href={section.href.replace('#', '/').replace('/token-plan', '/products')}
+              key={`docs-section-${section.title}`}
+            >
+              {section.title}
             </a>
           ))}
-        </div>
-      </section>
+          <div className="docs-sidebar-tree">
+            {docsNavGroups.map((group) => (
+              <div className="docs-nav-group" key={group.title}>
+                <a className={activeGroup.title === group.title ? 'active' : ''} href={group.href}>
+                  {group.title}
+                </a>
+                {group.pages.map((page) => (
+                  <a className={page.href === activePage.href ? 'active-page' : ''} href={page.href} key={page.href}>
+                    {page.title}
+                  </a>
+                ))}
+              </div>
+            ))}
+          </div>
+        </aside>
 
-      <section className="docs-detail-section">
-        {docsSections.map((section) => (
-          <article className="docs-detail-row" id={section.href.slice(1)} key={section.title}>
-            <div>
-              <span className="mono-label">{section.title}</span>
-              <h2>{section.title}</h2>
-            </div>
-            <p>{section.copy}</p>
-          </article>
-        ))}
+        <article className="docs-reader">
+          <span className="mono-label">{activeGroup.title}</span>
+          <h2>{activePage.title}</h2>
+          <p className="docs-lede">{activePage.summary}</p>
+          <div className="docs-callout">
+            <strong>Project rule</strong>
+            <p>
+              Research and open source writing belongs in blog categories. Product implementation details,
+              API contracts, MCP contracts, install steps, pricing, and release notes belong here.
+            </p>
+          </div>
+          <div className="docs-content-grid">
+            {activeGroup.pages.map((page) => (
+              <a className="docs-content-card" href={page.href} key={`reader-${page.href}`}>
+                <span>{activeGroup.title}</span>
+                <strong>{page.title}</strong>
+                <p>{page.summary}</p>
+              </a>
+            ))}
+          </div>
+        </article>
+
+        <aside className="docs-on-this-page">
+          <span>On this page</span>
+          <a href="#overview">Overview</a>
+          <a href="#contracts">Contracts</a>
+          <a href="#next-steps">Next steps</a>
+          <a href="https://blog.bapx.in/research">Research blog</a>
+          <a href="https://blog.bapx.in/opensource">Open source blog</a>
+        </aside>
       </section>
 
       <footer className="site-footer">

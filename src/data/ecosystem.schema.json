@@ -8,7 +8,12 @@
     "oauthProviders",
     "products",
     "platformNav",
+    "adminNav",
     "adminTabs",
+    "ecosystemBackend",
+    "billingProviders",
+    "workspaceProjects",
+    "adminPanels",
     "metrics",
     "onboarding",
     "openSourceProjects",
@@ -58,9 +63,61 @@
       "type": "array",
       "items": { "$ref": "#/$defs/navItem" }
     },
+    "adminNav": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/navItem" }
+    },
     "adminTabs": {
       "type": "array",
       "items": { "$ref": "#/$defs/textItem" }
+    },
+    "ecosystemBackend": {
+      "type": "object",
+      "required": ["name", "runtime", "dataStore", "policy", "root", "packagesRoot"],
+      "properties": {
+        "name": { "type": "string" },
+        "runtime": { "type": "string" },
+        "dataStore": { "type": "string" },
+        "policy": { "type": "string" },
+        "root": { "type": "string" },
+        "packagesRoot": { "type": "string" }
+      }
+    },
+    "billingProviders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "status", "scope"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "status": { "type": "string" },
+          "scope": { "type": "string" }
+        }
+      }
+    },
+    "workspaceProjects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "path", "role"],
+        "properties": {
+          "name": { "type": "string" },
+          "path": { "type": "string" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    "adminPanels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "summary"],
+        "properties": {
+          "title": { "type": "string" },
+          "summary": { "type": "string" }
+        }
+      }
     },
     "metrics": {
       "type": "array",
