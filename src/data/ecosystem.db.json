@@ -1,0 +1,303 @@
+{
+  "identity": {
+    "workspace": "bapx.in",
+    "primaryOrg": "Bapx Media Hub",
+    "currentUser": {
+      "name": "Getwin Harris",
+      "email": "info@bapx.in",
+      "role": "Owner"
+    },
+    "billing": {
+      "trialDays": 60,
+      "plans": [
+        {
+          "name": "AVM self-hosted",
+          "price": "$5/mo",
+          "summary": "Install @bapX/vm on a customer-owned VPS and operate it through bapX API/MCP."
+        },
+        {
+          "name": "AVM white label",
+          "price": "$20/mo",
+          "summary": "White-label business runtime access after unified account and billing setup."
+        },
+        {
+          "name": "Media Hub",
+          "price": "Custom",
+          "summary": "Web, social, automation, ads, SEO, and business operations priced to the client scope."
+        }
+      ]
+    }
+  },
+  "oauthProviders": [
+    {
+      "id": "google",
+      "name": "Google",
+      "status": "planned",
+      "callbackUrl": "https://api.bapx.in/auth/oauth/google/callback",
+      "scope": "Unified login, user profile, email verification"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "status": "planned",
+      "callbackUrl": "https://api.bapx.in/auth/oauth/github/callback",
+      "scope": "Developer login, repo contribution, package install context"
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "status": "planned",
+      "callbackUrl": "https://api.bapx.in/auth/oauth/openai/callback",
+      "scope": "ChatGPT connector identity and user-token handoff"
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "status": "planned",
+      "callbackUrl": "https://api.bapx.in/auth/oauth/apple/callback",
+      "scope": "Consumer login for mobile and privacy-forward accounts"
+    }
+  ],
+  "products": [
+    {
+      "id": "platform",
+      "name": "Platform",
+      "host": "platform.bapx.in",
+      "status": "central dashboard",
+      "plan": "Unified account",
+      "description": "User-facing dashboard for login, products, billing, subscriptions, hosted apps, and API/MCP access."
+    },
+    {
+      "id": "avm",
+      "name": "AVM",
+      "host": "avm.bapx.in",
+      "status": "package-first",
+      "plan": "$5/mo self-hosted",
+      "description": "Headless @bapX/vm package for customer-owned VPS installs operated through api.bapx.in and api.bapx.in/mcp."
+    },
+    {
+      "id": "mediahub",
+      "name": "Bapx Media Hub",
+      "host": "mediahub.bapx.in",
+      "status": "service business",
+      "plan": "custom",
+      "description": "Custom web, social, automation, ads, SEO, content, and business presence services around real client operations."
+    },
+    {
+      "id": "api",
+      "name": "API and MCP",
+      "host": "api.bapx.in",
+      "status": "gateway",
+      "plan": "usage-aware",
+      "description": "Shared API and MCP gateway for product APIs, tool contracts, schemas, and agent-facing integrations."
+    }
+  ],
+  "platformNav": [
+    { "label": "Home", "href": "https://platform.bapx.in" },
+    { "label": "Products", "href": "https://platform.bapx.in/products" },
+    { "label": "AVM", "href": "https://avm.bapx.in" },
+    { "label": "Media Hub", "href": "https://mediahub.bapx.in" },
+    { "label": "API Keys", "href": "https://platform.bapx.in/api-keys" },
+    { "label": "Usage", "href": "https://platform.bapx.in/usage" },
+    { "label": "Billing", "href": "https://platform.bapx.in/billing" },
+    { "label": "Blogs", "href": "https://blog.bapx.in" },
+    { "label": "Settings", "href": "https://platform.bapx.in/settings" }
+  ],
+  "adminTabs": [
+    { "label": "General" },
+    { "label": "OAuth" },
+    { "label": "Billing" },
+    { "label": "Blogs" },
+    { "label": "Projects" },
+    { "label": "Maps" },
+    { "label": "OKF" }
+  ],
+  "metrics": [
+    { "label": "Active products", "value": "5", "hint": "Platform, AVM, Media Hub, Domains, API/MCP" },
+    { "label": "MCP gateway", "value": "api.bapx.in/mcp", "hint": "Shared agent gateway" },
+    { "label": "Trial window", "value": "60 days", "hint": "Self-hosted AVM evaluation" },
+    { "label": "Runtime proxy", "value": "ACM********", "hint": "Generated per customer VM" }
+  ],
+  "onboarding": [
+    { "label": "Create unified account", "state": "done" },
+    { "label": "Connect Google, GitHub, OpenAI, or Apple OAuth", "state": "pending" },
+    { "label": "Add billing and trial state", "state": "pending" },
+    { "label": "Install @bapX/vm on the customer VPS", "state": "pending" }
+  ],
+  "openSourceProjects": [
+    {
+      "title": "pak-it",
+      "href": "https://github.com/getwinharris/pak-it",
+      "copy": "Packaging and installation research for product delivery."
+    },
+    {
+      "title": "map.mmd",
+      "href": "https://github.com/getwinharris/map.mmd",
+      "copy": "Repository map and knowledge graph direction."
+    },
+    {
+      "title": "x8Dsub-byte",
+      "href": "https://github.com/bapXai/x8Dsub-byte",
+      "copy": "Research project under the bapXai direction."
+    },
+    {
+      "title": "ByteOmniDiffus-RLM-HyperAGI",
+      "href": "https://github.com/getwinharris/ByteOmniDiffus-RLM-HyperAGI",
+      "copy": "ML, AI, and agentic research exploration."
+    }
+  ],
+  "mediaHubClients": [
+    {
+      "name": "GUT Conference",
+      "category": "Web product",
+      "summary": "Web product development and management tailored for conference operations.",
+      "links": [{ "label": "Website", "href": "https://gutconference.online/" }]
+    },
+    {
+      "name": "Sri Panchami Spiritual",
+      "category": "Web product",
+      "summary": "Web product development and management tailored for a spiritual service brand.",
+      "links": [{ "label": "Website", "href": "https://sripanchamispiritual.com/" }]
+    },
+    {
+      "name": "NEBO Lifestyle Clinic",
+      "category": "Web and social",
+      "summary": "Full business conversion online funnel, website, and social media management.",
+      "links": [
+        { "label": "Website", "href": "https://nebowellness.com/" },
+        { "label": "Facebook", "href": "https://www.facebook.com/nebolifestyleclinic" },
+        { "label": "Instagram", "href": "https://www.instagram.com/nebolifestyleclinic/" },
+        { "label": "YouTube", "href": "https://www.youtube.com/@nebolifestyleclinic" }
+      ]
+    },
+    {
+      "name": "Flexi Feet",
+      "category": "Web and social",
+      "summary": "Website and social media management for business presence and customer acquisition.",
+      "links": [
+        { "label": "Website", "href": "https://flexifeet.net/" },
+        { "label": "Instagram", "href": "https://www.instagram.com/flexifeetmalaysia/" },
+        { "label": "Facebook", "href": "https://www.facebook.com/flexifeetmalaysia" },
+        { "label": "YouTube", "href": "https://www.youtube.com/@flexifeetmalaysia" },
+        { "label": "TikTok", "href": "https://www.tiktok.com/@flexifeetmalaysia" }
+      ]
+    },
+    {
+      "name": "Indian Bariatrics",
+      "category": "Web and social",
+      "summary": "Website and social media management for healthcare education and patient reach.",
+      "links": [
+        { "label": "Website", "href": "https://indianbariatrics.com/" },
+        { "label": "Facebook", "href": "https://www.facebook.com/FightObesityAndDiabetes/" },
+        { "label": "YouTube", "href": "https://www.youtube.com/@Bariatricdoctor" },
+        { "label": "Instagram", "href": "https://www.instagram.com/bariatric_doctor/" }
+      ]
+    },
+    {
+      "name": "Happy Feet Erode",
+      "category": "Social only",
+      "summary": "Social media content and management without a website build.",
+      "links": [
+        { "label": "Instagram", "href": "https://www.instagram.com/happyfeeterode/" },
+        { "label": "Facebook", "href": "https://www.facebook.com/happyfeeterode/" },
+        { "label": "YouTube", "href": "https://www.youtube.com/@happyfeeterode" }
+      ]
+    }
+  ],
+  "blogPosts": [
+    {
+      "title": "AVM package roadmap for customer-owned VPS installs",
+      "category": "Product",
+      "date": "2026-07-02",
+      "copy": "The self-hosted AVM direction, npm package target, connector path, and what must be production-ready before managed resale.",
+      "href": "https://blog.bapx.in/product/avm-package-roadmap"
+    },
+    {
+      "title": "Repository maps as a working knowledge graph",
+      "category": "Research",
+      "date": "2026-07-02",
+      "copy": "How repo maps should connect packages, routes, schemas, MCP tools, docs, skills, providers, and architecture gaps.",
+      "href": "https://blog.bapx.in/research/repository-maps"
+    },
+    {
+      "title": "Open source projects in the bapX research lane",
+      "category": "Open source",
+      "date": "2026-07-02",
+      "copy": "Public repositories including pak-it, map.mmd, x8Dsub-byte, and ByteOmniDiffus-RLM-HyperAGI, with contribution paths through GitHub.",
+      "href": "https://blog.bapx.in/opensource"
+    },
+    {
+      "title": "Media Hub systems for web, social, and business presence",
+      "category": "Company",
+      "date": "2026-07-02",
+      "copy": "How client websites, content, ads, SEO, funnels, and social operations become managed digital business systems.",
+      "href": "https://mediahub.bapx.in"
+    },
+    {
+      "title": "API and MCP gateway planning for product surfaces",
+      "category": "Engineering",
+      "date": "2026-07-02",
+      "copy": "Notes for api.bapx.in, api.bapx.in/mcp, product connectors, schemas, auth, and runtime contracts.",
+      "href": "https://docs.bapx.in"
+    },
+    {
+      "title": "Agent framework and model research notes",
+      "category": "Research",
+      "date": "2026-07-02",
+      "copy": "Research notes for agent frameworks, model training direction, evaluation, and how research stays distinct from installable products.",
+      "href": "https://blog.bapx.in/research"
+    },
+    {
+      "title": "Release notes for bapX product surfaces",
+      "category": "Release",
+      "date": "2026-07-02",
+      "copy": "A release log for public site, docs, AVM, Media Hub, API, MCP, and product-surface changes.",
+      "href": "https://blog.bapx.in/release"
+    },
+    {
+      "title": "Company notes from Bapx Media Hub",
+      "category": "Company",
+      "date": "2026-07-02",
+      "copy": "Company updates, services, portfolio direction, public announcements, and operating notes.",
+      "href": "https://blog.bapx.in/company"
+    }
+  ],
+  "docsSections": [
+    {
+      "title": "Developer Guides",
+      "copy": "Start here for product architecture, AVM install flow, app integration, MCP usage, schemas, OAuth, and environment setup.",
+      "href": "#developer-guides"
+    },
+    {
+      "title": "API",
+      "copy": "Gateway contracts for api.bapx.in, SDKs, auth, storage, functions, realtime, webhooks, and MCP endpoints.",
+      "href": "#api"
+    },
+    {
+      "title": "Token Plan",
+      "copy": "Subscription key, user OAuth, Codex/OpenAI token usage, trial access, quotas, and team assignment rules.",
+      "href": "#token-plan"
+    },
+    {
+      "title": "Pricing",
+      "copy": "Self-hosted AVM, white-label business plans, Media Hub services, usage-based API costs, and enterprise terms.",
+      "href": "#pricing"
+    },
+    {
+      "title": "Release Notes",
+      "copy": "Product releases, package updates, API changes, MCP tool changes, security fixes, and migration notes.",
+      "href": "#release-notes"
+    },
+    {
+      "title": "Developer Program",
+      "copy": "Contribution rules, GitHub issue flow, partner builds, plugin work, app submissions, and support paths.",
+      "href": "#developer-program"
+    }
+  ],
+  "mapPolicy": {
+    "repoMap": "map.mmd",
+    "combinedMap": "/root/bapx.in/map.mmd",
+    "generator": "scripts/generate-map.mjs",
+    "testCommand": "npm test"
+  }
+}

@@ -1,176 +1,12 @@
-const openSourceProjects = [
-  {
-    title: 'pak-it',
-    href: 'https://github.com/getwinharris/pak-it',
-    copy: 'Packaging and installation research for product delivery.',
-  },
-  {
-    title: 'map.mmd',
-    href: 'https://github.com/getwinharris/map.mmd',
-    copy: 'Repository map and knowledge graph direction.',
-  },
-  {
-    title: 'x8Dsub-byte',
-    href: 'https://github.com/bapXai/x8Dsub-byte',
-    copy: 'Research project under the bapXai direction.',
-  },
-  {
-    title: 'ByteOmniDiffus-RLM-HyperAGI',
-    href: 'https://github.com/getwinharris/ByteOmniDiffus-RLM-HyperAGI',
-    copy: 'ML, AI, and agentic research exploration.',
-  },
-];
-
-const mediaHubClients = [
-  {
-    name: 'GUT Conference',
-    category: 'Web product',
-    summary: 'Web product development and management tailored for conference operations.',
-    links: [{ label: 'Website', href: 'https://gutconference.online/' }],
-  },
-  {
-    name: 'Sri Panchami Spiritual',
-    category: 'Web product',
-    summary: 'Web product development and management tailored for a spiritual service brand.',
-    links: [{ label: 'Website', href: 'https://sripanchamispiritual.com/' }],
-  },
-  {
-    name: 'NEBO Lifestyle Clinic',
-    category: 'Web and social',
-    summary: 'Full business conversion online funnel, website, and social media management.',
-    links: [
-      { label: 'Website', href: 'https://nebowellness.com/' },
-      { label: 'Facebook', href: 'https://www.facebook.com/nebolifestyleclinic' },
-      { label: 'Instagram', href: 'https://www.instagram.com/nebolifestyleclinic/' },
-      { label: 'YouTube', href: 'https://www.youtube.com/@nebolifestyleclinic' },
-    ],
-  },
-  {
-    name: 'Flexi Feet',
-    category: 'Web and social',
-    summary: 'Website and social media management for business presence and customer acquisition.',
-    links: [
-      { label: 'Website', href: 'https://flexifeet.net/' },
-      { label: 'Instagram', href: 'https://www.instagram.com/flexifeetmalaysia/' },
-      { label: 'Facebook', href: 'https://www.facebook.com/flexifeetmalaysia' },
-      { label: 'YouTube', href: 'https://www.youtube.com/@flexifeetmalaysia' },
-      { label: 'TikTok', href: 'https://www.tiktok.com/@flexifeetmalaysia' },
-    ],
-  },
-  {
-    name: 'Indian Bariatrics',
-    category: 'Web and social',
-    summary: 'Website and social media management for healthcare education and patient reach.',
-    links: [
-      { label: 'Website', href: 'https://indianbariatrics.com/' },
-      { label: 'Facebook', href: 'https://www.facebook.com/FightObesityAndDiabetes/' },
-      { label: 'YouTube', href: 'https://www.youtube.com/@Bariatricdoctor' },
-      { label: 'Instagram', href: 'https://www.instagram.com/bariatric_doctor/' },
-    ],
-  },
-  {
-    name: 'Happy Feet Erode',
-    category: 'Social only',
-    summary: 'Social media content and management without a website build.',
-    links: [
-      { label: 'Instagram', href: 'https://www.instagram.com/happyfeeterode/' },
-      { label: 'Facebook', href: 'https://www.facebook.com/happyfeeterode/' },
-      { label: 'YouTube', href: 'https://www.youtube.com/@happyfeeterode' },
-    ],
-  },
-];
-
-const blogPosts = [
-  {
-    title: 'AVM package roadmap for customer-owned VPS installs',
-    category: 'Product',
-    date: '2026-07-02',
-    copy: 'The self-hosted AVM direction, npm package target, connector path, and what must be production-ready before managed resale.',
-    href: 'https://docs.bapx.in',
-  },
-  {
-    title: 'Repository maps as a working knowledge graph',
-    category: 'Research',
-    date: '2026-07-02',
-    copy: 'How repo-map.mmd should connect packages, routes, schemas, MCP tools, docs, skills, providers, and architecture gaps.',
-    href: 'https://docs.bapx.in',
-  },
-  {
-    title: 'Open source projects in the bapX research lane',
-    category: 'Open source',
-    date: '2026-07-02',
-    copy: 'Public repositories including pak-it, map.mmd, x8Dsub-byte, and ByteOmniDiffus-RLM-HyperAGI, with contribution paths through GitHub.',
-    href: 'https://blog.bapx.in/opensource',
-  },
-  {
-    title: 'Media Hub systems for web, social, and business presence',
-    category: 'Company',
-    date: '2026-07-02',
-    copy: 'How client websites, content, ads, SEO, funnels, and social operations become managed digital business systems.',
-    href: 'https://mediahub.bapx.in',
-  },
-  {
-    title: 'API and MCP gateway planning for product surfaces',
-    category: 'Engineering',
-    date: '2026-07-02',
-    copy: 'Notes for api.bapx.in, api.bapx.in/mcp, product connectors, schemas, auth, and runtime contracts.',
-    href: 'https://docs.bapx.in',
-  },
-  {
-    title: 'Agent framework and model research notes',
-    category: 'Research',
-    date: '2026-07-02',
-    copy: 'Research notes for agent frameworks, model training direction, evaluation, and how research stays distinct from installable products.',
-    href: 'https://blog.bapx.in/research',
-  },
-  {
-    title: 'Release notes for bapX product surfaces',
-    category: 'Release',
-    date: '2026-07-02',
-    copy: 'A release log for public site, docs, AVM, Media Hub, API, MCP, and product-surface changes.',
-    href: 'https://blog.bapx.in/release',
-  },
-  {
-    title: 'Company notes from Bapx Media Hub',
-    category: 'Company',
-    date: '2026-07-02',
-    copy: 'Company updates, services, portfolio direction, public announcements, and operating notes.',
-    href: 'https://blog.bapx.in/company',
-  },
-];
-
-const docsSections = [
-  {
-    title: 'Developer Guides',
-    copy: 'Start here for product architecture, AVM install flow, app integration, MCP usage, schemas, OAuth, and environment setup.',
-    href: '#developer-guides',
-  },
-  {
-    title: 'API',
-    copy: 'Gateway contracts for api.bapx.in, SDKs, auth, storage, functions, realtime, webhooks, and MCP endpoints.',
-    href: '#api',
-  },
-  {
-    title: 'Token Plan',
-    copy: 'Subscription key, user OAuth, Codex/OpenAI token usage, trial access, quotas, and team assignment rules.',
-    href: '#token-plan',
-  },
-  {
-    title: 'Pricing',
-    copy: 'Self-hosted AVM, white-label business plans, Media Hub services, usage-based API costs, and enterprise terms.',
-    href: '#pricing',
-  },
-  {
-    title: 'Release Notes',
-    copy: 'Product releases, package updates, API changes, MCP tool changes, security fixes, and migration notes.',
-    href: '#release-notes',
-  },
-  {
-    title: 'Developer Program',
-    copy: 'Contribution rules, GitHub issue flow, partner builds, plugin work, app submissions, and support paths.',
-    href: '#developer-program',
-  },
-];
+import {
+  blogPosts,
+  docsSections,
+  ecosystemDb,
+  mediaHubClients,
+  openSourceProjects,
+  type Product,
+} from '../data/ecosystem';
+import type React from 'react';
 
 type MenuItem = {
   title: string;
@@ -210,6 +46,14 @@ function getProductPrefix() {
     return 'mediahub';
   }
 
+  if (hostname === 'platform.bapx.in' || hostname.startsWith('platform.')) {
+    return 'platform';
+  }
+
+  if (hostname === 'admin.bapx.in' || hostname.startsWith('admin.')) {
+    return 'admin';
+  }
+
   if (hostname.endsWith('.bapx.in')) {
     return hostname.split('.')[0];
   }
@@ -235,6 +79,8 @@ function SiteHeader({ contactLabel = 'Contact' }: { contactLabel?: string }) {
         <BapxBrand />
       </a>
       <nav className="site-nav" aria-label="Primary navigation">
+        <a href="https://platform.bapx.in">Platform</a>
+        <a href="https://docs.bapx.in">Docs</a>
         {menuGroups.map((group) => (
           <details className="nav-menu" key={group.label}>
             <summary>{group.label}</summary>
@@ -260,9 +106,9 @@ function SiteHeader({ contactLabel = 'Contact' }: { contactLabel?: string }) {
             </div>
           </details>
         ))}
-        <a href="mailto:info@bapx.in">Contact</a>
+        <a href="https://bapx.in/login">Sign in</a>
       </nav>
-      <a className="header-cta" href="mailto:info@bapx.in">
+      <a className="header-cta" href={contactLabel === 'Sign in' ? 'https://bapx.in/login' : 'mailto:info@bapx.in'}>
         {contactLabel}
       </a>
     </header>
@@ -304,14 +150,19 @@ const menuGroups: MenuGroup[] = [
         href: 'https://avm.bapx.in',
       },
       {
+        title: 'Platform',
+        copy: 'Unified login, products, subscriptions, billing, and app access.',
+        href: 'https://platform.bapx.in',
+      },
+      {
         title: 'Bapx Media Hub',
         copy: 'Custom media, business presence, SMM, ads, SEO, and automation services.',
         href: 'https://mediahub.bapx.in',
       },
       {
-        title: 'Domains',
-        copy: 'Domain resale, DNS, renewals, and ownership management.',
-        href: 'https://domains.bapx.in',
+        title: 'API and MCP',
+        copy: 'Shared API gateway and agent-facing MCP endpoint.',
+        href: 'https://api.bapx.in/mcp',
       },
     ],
   },
@@ -454,6 +305,246 @@ const menuGroups: MenuGroup[] = [
     ],
   },
 ];
+
+function PlatformSidebar({ active = 'Home' }: { active?: string }) {
+  return (
+    <aside className="platform-sidebar">
+      <div className="platform-project-select">
+        <strong>Default project</strong>
+        <span>⌄</span>
+      </div>
+      <label className="platform-search">
+        <span>Search</span>
+        <input aria-label="Search platform" />
+      </label>
+      <nav className="platform-nav" aria-label="Platform navigation">
+        {ecosystemDb.platformNav.map((item) => (
+          <a
+            className={active === item.label ? 'active' : ''}
+            href={item.href}
+            key={`platform-nav-${item.label}`}
+          >
+            <span aria-hidden="true">{item.label.slice(0, 1)}</span>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      <div className="platform-sidebar-footer">
+        <div className="platform-cleanup-card">
+          <strong>Unified account layer</strong>
+          <p>OAuth, billing, apps, blogs, and AVM installs are managed from the same workspace.</p>
+        </div>
+        <div className="platform-org">
+          <span>B</span>
+          <div>
+            <strong>{ecosystemDb.identity.primaryOrg}</strong>
+            <small>Organization</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+function PlatformShell({
+  active,
+  title,
+  children,
+}: {
+  active?: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <main className="platform-shell">
+      <PlatformSidebar active={active} />
+      <section className="platform-main">
+        <div className="platform-title-row">
+          <div>
+            <p className="mono-label">platform.bapx.in</p>
+            <h1>{title}</h1>
+          </div>
+          <div className="range-pills" aria-label="Time range">
+            <span className="active">24h</span>
+            <span>7d</span>
+            <span>30d</span>
+            <span>90d</span>
+          </div>
+        </div>
+        {children}
+      </section>
+    </main>
+  );
+}
+
+function ProductStatusCard({ product }: { product: Product }) {
+  return (
+    <article className="platform-product-card">
+      <span>{product.status}</span>
+      <h3>{product.name}</h3>
+      <p>{product.description}</p>
+      <div>
+        <a href={`https://${product.host}`}>{product.host}</a>
+        <small>{product.plan}</small>
+      </div>
+    </article>
+  );
+}
+
+export function PlatformPage() {
+  return (
+    <PlatformShell active="Home" title="Home">
+      <section className="onboarding-panel">
+        <div>
+          <h2>Get started</h2>
+          <p>Set up the account, billing, OAuth, and runtime contract before installing products.</p>
+        </div>
+        <div className="onboarding-list">
+          {ecosystemDb.onboarding.map((item, index) => (
+            <div className="onboarding-item" key={item.label}>
+              <span className={item.state === 'done' ? 'done' : ''}>{item.state === 'done' ? '✓' : index + 1}</span>
+              <strong>{item.label}</strong>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="metric-grid">
+        {ecosystemDb.metrics.map((metric) => (
+          <article className="metric-card" key={metric.label}>
+            <span>{metric.label}</span>
+            <strong>{metric.value}</strong>
+            <p>{metric.hint}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="platform-content-grid">
+        <div>
+          <div className="platform-section-heading">
+            <h2>Products</h2>
+            <a href="https://bapx.in/login">Manage access</a>
+          </div>
+          <div className="platform-products">
+            {ecosystemDb.products.map((product) => (
+              <ProductStatusCard product={product} key={product.id} />
+            ))}
+          </div>
+        </div>
+        <aside className="updates-panel">
+          <h2>Updates</h2>
+          {blogPosts.slice(0, 4).map((post) => (
+            <a href={post.href} key={`platform-update-${post.title}`}>
+              <span>{post.category}</span>
+              <strong>{post.title}</strong>
+              <small>{post.date}</small>
+            </a>
+          ))}
+        </aside>
+      </section>
+    </PlatformShell>
+  );
+}
+
+export function AdminPage() {
+  return (
+    <PlatformShell active="Settings" title="Admin">
+      <div className="settings-tabs" role="tablist" aria-label="Admin sections">
+        {ecosystemDb.adminTabs.map((tab, index) => (
+          <button className={index === 0 ? 'active' : ''} key={tab.label} type="button">
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      <section className="admin-grid">
+        <article className="settings-card">
+          <h2>Central login</h2>
+          <p>
+            OAuth providers stay centralized at api.bapx.in so platform, AVM, blogs, billing, and
+            future products share one account identity.
+          </p>
+          <div className="provider-table">
+            {ecosystemDb.oauthProviders.map((provider) => (
+              <div className="provider-row" key={provider.id}>
+                <div>
+                  <strong>{provider.name}</strong>
+                  <small>{provider.scope}</small>
+                </div>
+                <code>{provider.callbackUrl}</code>
+                <span>{provider.status}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="settings-card">
+          <h2>Blog and docs control</h2>
+          <p>Posts, categories, release notes, and docs sections are JSON-backed until the API layer is live.</p>
+          <div className="admin-list">
+            {blogPosts.slice(0, 5).map((post) => (
+              <a href={post.href} key={`admin-blog-${post.title}`}>
+                <span>{post.category}</span>
+                <strong>{post.title}</strong>
+              </a>
+            ))}
+          </div>
+        </article>
+
+        <article className="settings-card">
+          <h2>Map health</h2>
+          <p>Every test run regenerates the repository map so agents can read one current knowledge graph.</p>
+          <div className="admin-list">
+            <div>
+              <span>Repo map</span>
+              <strong>{ecosystemDb.mapPolicy.repoMap}</strong>
+            </div>
+            <div>
+              <span>Combined map</span>
+              <strong>{ecosystemDb.mapPolicy.combinedMap}</strong>
+            </div>
+            <div>
+              <span>Generator</span>
+              <strong>{ecosystemDb.mapPolicy.generator}</strong>
+            </div>
+          </div>
+        </article>
+      </section>
+    </PlatformShell>
+  );
+}
+
+export function LoginPage() {
+  return (
+    <main className="login-page">
+      <a className="login-brand" href="https://bapx.in" aria-label="bapX home">
+        <BapxBrand />
+      </a>
+      <section className="login-card">
+        <p className="mono-label">Unified login</p>
+        <h1>Sign in to bapX</h1>
+        <p>
+          One account controls platform access, AVM trials, billing, product subscriptions, blogs,
+          Media Hub work, and future API/MCP tools.
+        </p>
+        <div className="oauth-grid">
+          {ecosystemDb.oauthProviders.map((provider) => (
+            <a href={`https://api.bapx.in/auth/oauth/${provider.id}`} key={`login-${provider.id}`}>
+              Continue with {provider.name}
+            </a>
+          ))}
+        </div>
+        <label className="email-login">
+          <span>Email</span>
+          <input placeholder="name@company.com" type="email" />
+        </label>
+        <a className="primary-action" href="https://platform.bapx.in">
+          Continue
+        </a>
+      </section>
+    </main>
+  );
+}
 
 export function LandingPage() {
   if (getProductPrefix() === 'avm') {
@@ -965,9 +1056,9 @@ export function NotFoundPage() {
             <span>doc</span>
             <strong>Ecosystem documentation</strong>
           </a>
-          <a href="https://domains.bapx.in">
-            <span>domains</span>
-            <strong>Domain resale and DNS</strong>
+          <a href="https://mediahub.bapx.in">
+            <span>mediahub</span>
+            <strong>Media Hub services</strong>
           </a>
           <a href="https://admin.bapx.in">
             <span>admin</span>

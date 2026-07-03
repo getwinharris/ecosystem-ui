@@ -259,6 +259,544 @@ a {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+.platform-shell {
+  display: grid;
+  grid-template-columns: 310px minmax(0, 1fr);
+  min-height: 100vh;
+  background: #202020;
+  color: var(--ink);
+}
+
+.platform-sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: #111111;
+}
+
+.platform-project-select {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  color: var(--body);
+  font-size: 15px;
+}
+
+.platform-project-select strong {
+  font-weight: 600;
+}
+
+.platform-search {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  margin: 14px 0 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 0 13px;
+  background: #1a1a1a;
+  color: var(--body-mid);
+}
+
+.platform-search span {
+  margin-right: 10px;
+}
+
+.platform-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: var(--body);
+  background: transparent;
+}
+
+.platform-nav {
+  display: grid;
+  gap: 2px;
+}
+
+.platform-nav a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  padding: 0 14px;
+  color: var(--body);
+  font-size: 16px;
+}
+
+.platform-nav a.active,
+.platform-nav a:hover {
+  background: #333333;
+  color: var(--ink);
+}
+
+.platform-nav a span {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  color: var(--body);
+  font-size: 11px;
+}
+
+.platform-sidebar-footer {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.platform-cleanup-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 16px;
+  background: #2b2b2b;
+}
+
+.platform-cleanup-card strong,
+.platform-org strong {
+  display: block;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.platform-cleanup-card p,
+.platform-org small {
+  margin: 7px 0 0;
+  color: var(--body-mid);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.platform-org {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px;
+}
+
+.platform-org > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--canvas);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.platform-main {
+  padding: 56px clamp(24px, 4vw, 60px) 80px;
+}
+
+.platform-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 46px;
+}
+
+.platform-title-row h1 {
+  margin: 10px 0 0;
+  color: var(--body);
+  font-size: clamp(42px, 5vw, 58px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.range-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 999px;
+  padding: 3px;
+  background: #0f0f0f;
+}
+
+.range-pills span {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 13px;
+  color: var(--body-mid);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.range-pills span.active {
+  background: #303030;
+  color: var(--ink);
+}
+
+.onboarding-panel,
+.metric-card,
+.platform-product-card,
+.updates-panel,
+.settings-card,
+.login-card {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  background: #202020;
+}
+
+.onboarding-panel {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.55fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 28px;
+}
+
+.onboarding-panel h2,
+.platform-section-heading h2,
+.updates-panel h2,
+.settings-card h2 {
+  margin: 0;
+  color: var(--body);
+  font-size: 24px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.onboarding-panel p,
+.metric-card p,
+.platform-product-card p,
+.settings-card p,
+.login-card p {
+  margin: 8px 0 0;
+  color: var(--body-mid);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.onboarding-list {
+  display: grid;
+  gap: 14px;
+}
+
+.onboarding-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--body);
+}
+
+.onboarding-item span {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 999px;
+  background: #3b3b3b;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.onboarding-item span.done {
+  background: #089b45;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  margin-bottom: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.metric-card {
+  min-height: 155px;
+  border: 0;
+  border-radius: 0;
+  padding: 24px;
+}
+
+.metric-card span,
+.platform-product-card span,
+.updates-panel span,
+.settings-card span,
+.provider-row span,
+.admin-list span {
+  display: block;
+  color: var(--body-mid);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.metric-card strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--body);
+  font-size: 28px;
+  font-weight: 650;
+}
+
+.platform-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.34fr);
+  gap: 42px;
+}
+
+.platform-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.platform-section-heading a {
+  color: var(--body-mid);
+  font-size: 14px;
+}
+
+.platform-products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.platform-product-card {
+  min-height: 230px;
+  padding: 24px;
+}
+
+.platform-product-card h3 {
+  margin: 40px 0 0;
+  color: var(--body);
+  font-size: 28px;
+  font-weight: 650;
+  line-height: 1.1;
+}
+
+.platform-product-card div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.platform-product-card a,
+.platform-product-card small {
+  color: var(--body);
+  font-size: 13px;
+}
+
+.platform-product-card small {
+  color: var(--body-mid);
+}
+
+.updates-panel {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 24px;
+}
+
+.updates-panel a {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.updates-panel strong {
+  color: var(--body);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.updates-panel small {
+  color: var(--body-mid);
+  font-size: 12px;
+}
+
+.settings-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: -22px 0 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.settings-tabs button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 14px;
+  color: var(--body-mid);
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.settings-tabs button.active {
+  border-color: var(--body);
+  color: var(--body);
+}
+
+.admin-grid {
+  display: grid;
+  gap: 22px;
+  max-width: 1180px;
+}
+
+.settings-card {
+  padding: 28px;
+}
+
+.provider-table {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  margin-top: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.provider-row {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.4fr) minmax(280px, 1fr) 100px;
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  background: #1b1b1b;
+}
+
+.provider-row strong,
+.admin-list strong {
+  display: block;
+  color: var(--body);
+  font-size: 15px;
+}
+
+.provider-row small,
+.admin-list a,
+.admin-list div {
+  color: var(--body-mid);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.provider-row code {
+  overflow-wrap: anywhere;
+  color: var(--body);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+}
+
+.provider-row > span {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+
+.admin-list {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  margin-top: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.admin-list a,
+.admin-list div {
+  display: grid;
+  gap: 7px;
+  padding: 16px;
+  background: #1b1b1b;
+}
+
+.login-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 28px;
+  background: #0a0a0a;
+}
+
+.login-brand {
+  position: fixed;
+  top: 24px;
+  left: 28px;
+}
+
+.login-card {
+  width: min(100%, 500px);
+  padding: 34px;
+}
+
+.login-card h1 {
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.oauth-grid {
+  display: grid;
+  gap: 10px;
+  margin: 26px 0 20px;
+}
+
+.oauth-grid a {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  color: var(--body);
+  background: #151515;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.email-login {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+  color: var(--body-mid);
+  font-size: 13px;
+}
+
+.email-login input {
+  min-height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 0 14px;
+  color: var(--body);
+  background: #151515;
+  font: inherit;
+}
+
 .hero-section {
   display: grid;
   grid-template-columns: minmax(0, 0.96fr) minmax(420px, 0.9fr);
@@ -1015,6 +1553,35 @@ a {
 }
 
 @media (max-width: 980px) {
+  .platform-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .platform-sidebar {
+    position: relative;
+    height: auto;
+  }
+
+  .platform-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .platform-sidebar-footer {
+    display: none;
+  }
+
+  .platform-title-row,
+  .onboarding-panel,
+  .platform-content-grid,
+  .provider-row {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-grid,
+  .platform-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .site-header {
     grid-template-columns: 1fr auto;
     align-items: start;
@@ -1064,6 +1631,28 @@ a {
 }
 
 @media (max-width: 640px) {
+  .platform-main {
+    padding: 34px 18px 60px;
+  }
+
+  .platform-title-row {
+    display: grid;
+  }
+
+  .platform-nav,
+  .metric-grid,
+  .platform-products {
+    grid-template-columns: 1fr;
+  }
+
+  .provider-row {
+    gap: 10px;
+  }
+
+  .login-card {
+    padding: 24px;
+  }
+
   .site-header {
     padding: 16px 18px;
   }

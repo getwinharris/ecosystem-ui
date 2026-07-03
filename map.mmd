@@ -1,0 +1,175 @@
+flowchart LR
+  Repo["ecosystem-ui"]
+  Package["npm package: ecosystem-ui"]
+  App["src/App.tsx route dispatcher"]
+  Landing["src/landing/LandingPage.tsx views"]
+  Styles["src/styles.css design system"]
+  Design["DESIGN.md bapX visual rules"]
+  Agents["AGENTS.md agent rules"]
+  Data["src/data/ecosystem.db.json"]
+  Schema["src/data/ecosystem.schema.json"]
+  MapGen["scripts/generate-map.mjs"]
+  Map["map.mmd generated knowledge graph"]
+  Repo --> Package
+  Repo --> App
+  App --> Landing
+  Landing --> Styles
+  Landing --> Data
+  Data --> Schema
+  Design --> Styles
+  Agents --> Map
+  MapGen --> Map
+  MapGen --> Data
+
+  subgraph Hosts["Public hosts and routed surfaces"]
+    Host_bapx_in["bapx.in<br/>Public ecosystem root and business entry"]
+    Host_bapx_in --> LandingPage
+    Host_www_bapx_in["www.bapx.in<br/>Public ecosystem root alias"]
+    Host_www_bapx_in --> LandingPage
+    Host_platform_bapx_in["platform.bapx.in<br/>Unified user dashboard"]
+    Host_platform_bapx_in --> PlatformPage
+    Host_admin_bapx_in["admin.bapx.in<br/>Cross-domain admin control surface"]
+    Host_admin_bapx_in --> AdminPage
+    Host_mediahub_bapx_in["mediahub.bapx.in<br/>Media Hub portfolio and services"]
+    Host_mediahub_bapx_in --> MediaHubPage
+    Host_blog_bapx_in["blog.bapx.in<br/>Blog categories and posts"]
+    Host_blog_bapx_in --> BlogPage
+    Host_docs_bapx_in["docs.bapx.in<br/>Developer docs for all products"]
+    Host_docs_bapx_in --> DocsPage
+    Host_avm_bapx_in["avm.bapx.in<br/>Headless @bapX/vm install surface"]
+    Host_avm_bapx_in --> AvmLandingPage
+    Host_vm_bapx_in["vm.bapx.in<br/>Reserved generated runtime namespace"]
+    Host_vm_bapx_in --> NotFoundPage
+  end
+
+  Landing --> LandingPage["LandingPage"]
+  Landing --> PlatformPage["PlatformPage"]
+  Landing --> AdminPage["AdminPage"]
+  Landing --> LoginPage["LoginPage"]
+  Landing --> MediaHubPage["MediaHubPage"]
+  Landing --> BlogPage["BlogPage"]
+  Landing --> DocsPage["DocsPage"]
+  Landing --> AvmLandingPage["AvmLandingPage"]
+  Landing --> NotFoundPage["NotFoundPage"]
+
+  subgraph Products["Products and ecosystem surfaces"]
+    Product_platform["Platform<br/>platform.bapx.in<br/>central dashboard"]
+    Data --> Product_platform
+    Product_platform --> PlatformPage
+    Product_avm["AVM<br/>avm.bapx.in<br/>package-first"]
+    Data --> Product_avm
+    Product_avm --> AvmLandingPage
+    Product_mediahub["Bapx Media Hub<br/>mediahub.bapx.in<br/>service business"]
+    Data --> Product_mediahub
+    Product_mediahub --> MediaHubPage
+    Product_api["API and MCP<br/>api.bapx.in<br/>gateway"]
+    Data --> Product_api
+  end
+
+  subgraph Auth["Central OAuth inventory"]
+    OAuth_google["Google OAuth<br/>planned"]
+    OAuth_google --> AdminPage
+    OAuth_google --> LoginPage
+    OAuth_github["GitHub OAuth<br/>planned"]
+    OAuth_github --> AdminPage
+    OAuth_github --> LoginPage
+    OAuth_openai["OpenAI OAuth<br/>planned"]
+    OAuth_openai --> AdminPage
+    OAuth_openai --> LoginPage
+    OAuth_apple["Apple OAuth<br/>planned"]
+    OAuth_apple --> AdminPage
+    OAuth_apple --> LoginPage
+  end
+
+  subgraph BlogDocs["Blog and docs knowledge"]
+    Blog_avm_package_roadmap_for_customer_owned_vps_installs["Product: AVM package roadmap for customer-owned VPS installs"]
+    Data --> Blog_avm_package_roadmap_for_customer_owned_vps_installs
+    Blog_avm_package_roadmap_for_customer_owned_vps_installs --> BlogPage
+    Blog_repository_maps_as_a_working_knowledge_graph["Research: Repository maps as a working knowledge graph"]
+    Data --> Blog_repository_maps_as_a_working_knowledge_graph
+    Blog_repository_maps_as_a_working_knowledge_graph --> BlogPage
+    Blog_open_source_projects_in_the_bapx_research_lane["Open source: Open source projects in the bapX research lane"]
+    Data --> Blog_open_source_projects_in_the_bapx_research_lane
+    Blog_open_source_projects_in_the_bapx_research_lane --> BlogPage
+    Blog_media_hub_systems_for_web_social_and_business_presence["Company: Media Hub systems for web, social, and business presence"]
+    Data --> Blog_media_hub_systems_for_web_social_and_business_presence
+    Blog_media_hub_systems_for_web_social_and_business_presence --> BlogPage
+    Blog_api_and_mcp_gateway_planning_for_product_surfaces["Engineering: API and MCP gateway planning for product surfaces"]
+    Data --> Blog_api_and_mcp_gateway_planning_for_product_surfaces
+    Blog_api_and_mcp_gateway_planning_for_product_surfaces --> BlogPage
+    Blog_agent_framework_and_model_research_notes["Research: Agent framework and model research notes"]
+    Data --> Blog_agent_framework_and_model_research_notes
+    Blog_agent_framework_and_model_research_notes --> BlogPage
+    Blog_release_notes_for_bapx_product_surfaces["Release: Release notes for bapX product surfaces"]
+    Data --> Blog_release_notes_for_bapx_product_surfaces
+    Blog_release_notes_for_bapx_product_surfaces --> BlogPage
+    Blog_company_notes_from_bapx_media_hub["Company: Company notes from Bapx Media Hub"]
+    Data --> Blog_company_notes_from_bapx_media_hub
+    Blog_company_notes_from_bapx_media_hub --> BlogPage
+    Docs_developer_guides["Docs: Developer Guides"]
+    Data --> Docs_developer_guides
+    Docs_developer_guides --> DocsPage
+    Docs_api["Docs: API"]
+    Data --> Docs_api
+    Docs_api --> DocsPage
+    Docs_token_plan["Docs: Token Plan"]
+    Data --> Docs_token_plan
+    Docs_token_plan --> DocsPage
+    Docs_pricing["Docs: Pricing"]
+    Data --> Docs_pricing
+    Docs_pricing --> DocsPage
+    Docs_release_notes["Docs: Release Notes"]
+    Data --> Docs_release_notes
+    Docs_release_notes --> DocsPage
+    Docs_developer_program["Docs: Developer Program"]
+    Data --> Docs_developer_program
+    Docs_developer_program --> DocsPage
+  end
+
+  subgraph MediaHub["Media Hub client examples"]
+    Client_gut_conference["GUT Conference<br/>Web product"]
+    Data --> Client_gut_conference
+    Client_gut_conference --> MediaHubPage
+    Client_sri_panchami_spiritual["Sri Panchami Spiritual<br/>Web product"]
+    Data --> Client_sri_panchami_spiritual
+    Client_sri_panchami_spiritual --> MediaHubPage
+    Client_nebo_lifestyle_clinic["NEBO Lifestyle Clinic<br/>Web and social"]
+    Data --> Client_nebo_lifestyle_clinic
+    Client_nebo_lifestyle_clinic --> MediaHubPage
+    Client_flexi_feet["Flexi Feet<br/>Web and social"]
+    Data --> Client_flexi_feet
+    Client_flexi_feet --> MediaHubPage
+    Client_indian_bariatrics["Indian Bariatrics<br/>Web and social"]
+    Data --> Client_indian_bariatrics
+    Client_indian_bariatrics --> MediaHubPage
+    Client_happy_feet_erode["Happy Feet Erode<br/>Social only"]
+    Data --> Client_happy_feet_erode
+    Client_happy_feet_erode --> MediaHubPage
+  end
+
+  subgraph OpenSource["Research and open source repositories"]
+    Repo_pak_it["pak-it"]
+    Data --> Repo_pak_it
+    Repo_pak_it --> BlogPage
+    Repo_map_mmd["map.mmd"]
+    Data --> Repo_map_mmd
+    Repo_map_mmd --> BlogPage
+    Repo_x8dsub_byte["x8Dsub-byte"]
+    Data --> Repo_x8dsub_byte
+    Repo_x8dsub_byte --> BlogPage
+    Repo_byteomnidiffus_rlm_hyperagi["ByteOmniDiffus-RLM-HyperAGI"]
+    Data --> Repo_byteomnidiffus_rlm_hyperagi
+    Repo_byteomnidiffus_rlm_hyperagi --> BlogPage
+  end
+
+
+  ApiGateway["api.bapx.in"]
+  McpGateway["api.bapx.in/mcp"]
+  AvmRuntime["ACM random8.vm.bapx.in generated runtime hosts"]
+  PlatformPage --> ApiGateway
+  AdminPage --> ApiGateway
+  AvmLandingPage --> ApiGateway
+  AvmLandingPage --> McpGateway
+  AvmLandingPage --> AvmRuntime
+  LoginPage --> ApiGateway
+

@@ -6,8 +6,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "map:repo": "node scripts/generate-map.mjs",
+    "build": "npm run map:repo && vite build",
     "preview": "vite preview",
+    "test": "npm run map:repo && npm run typecheck",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
   },

@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bapx.in/schemas/ecosystem.schema.json",
+  "title": "bapX Ecosystem UI Data",
+  "type": "object",
+  "required": [
+    "identity",
+    "oauthProviders",
+    "products",
+    "platformNav",
+    "adminTabs",
+    "metrics",
+    "onboarding",
+    "openSourceProjects",
+    "mediaHubClients",
+    "blogPosts",
+    "docsSections",
+    "mapPolicy"
+  ],
+  "properties": {
+    "identity": {
+      "type": "object",
+      "required": ["workspace", "primaryOrg", "currentUser", "billing"],
+      "properties": {
+        "workspace": { "type": "string" },
+        "primaryOrg": { "type": "string" },
+        "currentUser": {
+          "type": "object",
+          "required": ["name", "email", "role"],
+          "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string" },
+            "role": { "type": "string" }
+          }
+        },
+        "billing": {
+          "type": "object",
+          "required": ["trialDays", "plans"],
+          "properties": {
+            "trialDays": { "type": "number" },
+            "plans": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/plan" }
+            }
+          }
+        }
+      }
+    },
+    "oauthProviders": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/oauthProvider" }
+    },
+    "products": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/product" }
+    },
+    "platformNav": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/navItem" }
+    },
+    "adminTabs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/textItem" }
+    },
+    "metrics": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/metric" }
+    },
+    "onboarding": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/checkItem" }
+    },
+    "openSourceProjects": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/cardLink" }
+    },
+    "mediaHubClients": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/client" }
+    },
+    "blogPosts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/blogPost" }
+    },
+    "docsSections": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/cardLink" }
+    },
+    "mapPolicy": {
+      "type": "object",
+      "required": ["repoMap", "combinedMap", "generator", "testCommand"],
+      "properties": {
+        "repoMap": { "type": "string" },
+        "combinedMap": { "type": "string" },
+        "generator": { "type": "string" },
+        "testCommand": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "link": {
+      "type": "object",
+      "required": ["label", "href"],
+      "properties": {
+        "label": { "type": "string" },
+        "href": { "type": "string" }
+      }
+    },
+    "cardLink": {
+      "type": "object",
+      "required": ["title", "copy", "href"],
+      "properties": {
+        "title": { "type": "string" },
+        "copy": { "type": "string" },
+        "href": { "type": "string" }
+      }
+    },
+    "client": {
+      "type": "object",
+      "required": ["name", "category", "summary", "links"],
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "summary": { "type": "string" },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/link" }
+        }
+      }
+    },
+    "blogPost": {
+      "type": "object",
+      "required": ["title", "category", "date", "copy", "href"],
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "copy": { "type": "string" },
+        "href": { "type": "string" }
+      }
+    },
+    "oauthProvider": {
+      "type": "object",
+      "required": ["id", "name", "status", "callbackUrl", "scope"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string" },
+        "callbackUrl": { "type": "string" },
+        "scope": { "type": "string" }
+      }
+    },
+    "product": {
+      "type": "object",
+      "required": ["id", "name", "host", "status", "plan", "description"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "host": { "type": "string" },
+        "status": { "type": "string" },
+        "plan": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "navItem": {
+      "type": "object",
+      "required": ["label", "href"],
+      "properties": {
+        "label": { "type": "string" },
+        "href": { "type": "string" }
+      }
+    },
+    "textItem": {
+      "type": "object",
+      "required": ["label"],
+      "properties": {
+        "label": { "type": "string" }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "required": ["label", "value", "hint"],
+      "properties": {
+        "label": { "type": "string" },
+        "value": { "type": "string" },
+        "hint": { "type": "string" }
+      }
+    },
+    "checkItem": {
+      "type": "object",
+      "required": ["label", "state"],
+      "properties": {
+        "label": { "type": "string" },
+        "state": { "type": "string" }
+      }
+    },
+    "plan": {
+      "type": "object",
+      "required": ["name", "price", "summary"],
+      "properties": {
+        "name": { "type": "string" },
+        "price": { "type": "string" },
+        "summary": { "type": "string" }
+      }
+    }
+  }
+}
