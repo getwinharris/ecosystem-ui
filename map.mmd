@@ -24,6 +24,8 @@ flowchart LR
   subgraph Hosts["Public hosts and routed surfaces"]
     Host_bapx_in["bapx.in<br/>Public ecosystem root and business entry"]
     Host_bapx_in --> LandingPage
+    Host_bapx_in_contact["bapx.in/contact<br/>Contact page with email, phone, and Coimbatore address"]
+    Host_bapx_in_contact --> ContactPage
     Host_www_bapx_in["www.bapx.in<br/>Public ecosystem root alias"]
     Host_www_bapx_in --> LandingPage
     Host_platform_bapx_in["platform.bapx.in<br/>Unified user dashboard"]
@@ -45,6 +47,7 @@ flowchart LR
   Landing --> LandingPage["LandingPage"]
   Landing --> PlatformPage["PlatformPage"]
   Landing --> AdminPage["AdminPage"]
+  Landing --> ContactPage["ContactPage"]
   Landing --> LoginPage["LoginPage"]
   Landing --> MediaHubPage["MediaHubPage"]
   Landing --> BlogPage["BlogPage"]

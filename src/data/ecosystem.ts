@@ -58,6 +58,12 @@ type EcosystemDb = {
       }>;
     };
   };
+  contact: {
+    email: string;
+    phone: string;
+    telHref: string;
+    address: string;
+  };
   oauthProviders: OAuthProvider[];
   products: Product[];
   platformNav: Array<{

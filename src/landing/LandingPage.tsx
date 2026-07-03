@@ -8,6 +8,8 @@ import {
 } from '../data/ecosystem';
 import type React from 'react';
 
+const contactInfo = ecosystemDb.contact;
+
 function getProductPrefix() {
   if (typeof window === 'undefined') {
     return '';
@@ -57,6 +59,24 @@ function BapxBrand({ className = '' }: { className?: string }) {
   );
 }
 
+function OAuthLogo({ providerId, providerName }: { providerId: string; providerName: string }) {
+  const logos: Record<string, string> = {
+    google: 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg',
+    github: 'https://cdn.simpleicons.org/github/ffffff',
+    openai: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg',
+  };
+
+  return (
+    <img
+      className={`oauth-logo oauth-logo-${providerId}`}
+      src={logos[providerId]}
+      alt=""
+      aria-hidden="true"
+      title={providerName}
+    />
+  );
+}
+
 function SiteHeader({ contactLabel = 'Contact' }: { contactLabel?: string }) {
   return (
     <header className="site-header">
@@ -76,9 +96,14 @@ function SiteHeader({ contactLabel = 'Contact' }: { contactLabel?: string }) {
         <a href="https://mediahub.bapx.in">Media Hub</a>
         <a href="https://bapx.in/login">Sign in</a>
       </nav>
-      <a className="header-cta" href={contactLabel === 'Sign in' ? 'https://bapx.in/login' : 'mailto:info@bapx.in'}>
-        {contactLabel}
-      </a>
+      <div className="header-actions">
+        <a className="header-cta secondary-header-cta" href="https://bapx.in/contact">
+          {contactLabel}
+        </a>
+        <a className="header-cta" href="https://bapx.in/login">
+          Sign in
+        </a>
+      </div>
     </header>
   );
 }
@@ -388,33 +413,137 @@ export function AdminPage() {
 }
 
 export function LoginPage() {
+  const path = typeof window === 'undefined' ? '/login' : window.location.pathname;
+  const isSignup = path === '/signup';
+  const authTitle = isSignup ? 'Create your bapX account' : 'Sign in to bapX';
+  const passwordEndpoint = isSignup
+    ? 'https://api.bapx.in/auth/password/signup'
+    : 'https://api.bapx.in/auth/password/login';
+  const primaryProviders = ecosystemDb.oauthProviders.filter((provider) =>
+    ['google', 'github', 'openai'].includes(provider.id)
+  );
+
   return (
     <main className="login-page">
       <a className="login-brand" href="https://bapx.in" aria-label="bapX home">
         <BapxBrand />
       </a>
       <section className="login-card">
-        <p className="mono-label">Unified login</p>
-        <h1>Sign in to bapX</h1>
+        <p className="mono-label">Unified account</p>
+        <h1>{authTitle}</h1>
         <p>
           One account controls platform access, AVM trials, billing, product subscriptions, blogs,
           Media Hub work, and future API/MCP tools.
         </p>
+        <div className="auth-mode-tabs" aria-label="Authentication mode">
+          <a className={!isSignup ? 'active' : ''} href="/login">
+            Sign in
+          </a>
+          <a className={isSignup ? 'active' : ''} href="/signup">
+            Sign up
+          </a>
+        </div>
+        <form className="email-auth-form" action={passwordEndpoint} method="post">
+          {isSignup ? (
+            <label className="email-login">
+              <span>Name</span>
+              <input name="name" placeholder="Your name" type="text" autoComplete="name" required />
+            </label>
+          ) : null}
+          <label className="email-login">
+            <span>Email</span>
+            <input name="email" placeholder="name@company.com" type="email" autoComplete="email" required />
+          </label>
+          <label className="email-login">
+            <span>Password</span>
+            <input
+              name="password"
+              placeholder="Enter password"
+              type="password"
+              autoComplete={isSignup ? 'new-password' : 'current-password'}
+              minLength={8}
+              required
+            />
+          </label>
+          {isSignup ? (
+            <label className="email-login">
+              <span>Confirm password</span>
+              <input
+                name="passwordConfirmation"
+                placeholder="Confirm password"
+                type="password"
+                autoComplete="new-password"
+                minLength={8}
+                required
+              />
+            </label>
+          ) : null}
+          <button className="primary-action" type="submit">
+            {isSignup ? 'Create account' : 'Sign in'}
+          </button>
+        </form>
+        <div className="auth-divider">
+          <span>Or continue with</span>
+        </div>
         <div className="oauth-grid">
-          {ecosystemDb.oauthProviders.map((provider) => (
-            <a href={`https://api.bapx.in/auth/oauth/${provider.id}`} key={`login-${provider.id}`}>
-              Continue with {provider.name}
+          {primaryProviders.map((provider) => (
+            <a className="oauth-provider" href={`https://api.bapx.in/auth/oauth/${provider.id}`} key={`login-${provider.id}`}>
+              <OAuthLogo providerId={provider.id} providerName={provider.name} />
+              <span>{provider.name}</span>
             </a>
           ))}
         </div>
-        <label className="email-login">
-          <span>Email</span>
-          <input placeholder="name@company.com" type="email" />
-        </label>
-        <a className="primary-action" href="https://platform.bapx.in">
-          Continue
-        </a>
       </section>
+    </main>
+  );
+}
+
+export function ContactPage() {
+  return (
+    <main className="landing-page">
+      <SiteHeader />
+
+      <section className="hero-section ecosystem-hero contact-hero">
+        <div className="hero-copy">
+          <p className="mono-label">contact bapX</p>
+          <h1>Talk to bapX about web, media, automation, and ecosystem work</h1>
+          <p>
+            Reach Bapx Media Hub for business websites, social media management, custom apps,
+            automation, AVM access, platform questions, and ecosystem partnerships.
+          </p>
+        </div>
+      </section>
+
+      <section className="contact-detail-section">
+        <div className="contact-detail-card primary-contact-card">
+          <span>Email</span>
+          <h2>{contactInfo.email}</h2>
+          <a className="primary-action" href={`mailto:${contactInfo.email}`}>
+            Email bapX
+          </a>
+        </div>
+        <div className="contact-detail-card">
+          <span>Phone</span>
+          <h2>{contactInfo.phone}</h2>
+          <a className="secondary-action" href={contactInfo.telHref}>
+            Call now
+          </a>
+        </div>
+        <div className="contact-detail-card">
+          <span>Location</span>
+          <h2>{contactInfo.address}</h2>
+          <a className="secondary-action" href="https://mediahub.bapx.in">
+            Media Hub
+          </a>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <BapxBrand className="footer-brand" />
+        <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+        <a href={contactInfo.telHref}>{contactInfo.phone}</a>
+        <span>{contactInfo.address}</span>
+      </footer>
     </main>
   );
 }
@@ -437,7 +566,7 @@ export function LandingPage() {
             templates.
           </p>
           <div className="hero-actions">
-            <a className="primary-action" href="mailto:info@bapx.in">
+            <a className="primary-action" href="https://bapx.in/contact">
               Start a project
             </a>
             <a className="secondary-action" href="https://mediahub.bapx.in">
@@ -454,7 +583,7 @@ export function LandingPage() {
             architecture, use the product and docs surfaces. The root site stays focused on what
             bapX does for businesses.
           </p>
-        <a className="primary-action" href="mailto:info@bapx.in">
+        <a className="primary-action" href="https://bapx.in/contact">
           Contact bapX
         </a>
       </section>
@@ -463,7 +592,7 @@ export function LandingPage() {
         <BapxBrand className="footer-brand" />
         <a href="https://docs.bapx.in">Docs</a>
         <a href="https://bapx.in/login">Sign in</a>
-        <a href="mailto:info@bapx.in">info@bapx.in</a>
+        <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
       </footer>
     </main>
   );
@@ -484,7 +613,7 @@ export function MediaHubPage() {
             market and workflow.
           </p>
           <div className="hero-actions">
-            <a className="primary-action" href="mailto:info@bapx.in">
+            <a className="primary-action" href="https://bapx.in/contact">
               Discuss Media Hub
             </a>
             <a className="secondary-action" href="#media-clients">
@@ -552,7 +681,7 @@ export function MediaHubPage() {
         <BapxBrand className="footer-brand" />
         <a href="https://bapx.in">Ecosystem</a>
         <a href="https://blog.bapx.in/company">Company</a>
-        <a href="mailto:info@bapx.in">info@bapx.in</a>
+        <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
       </footer>
     </main>
   );
@@ -571,6 +700,7 @@ export function BlogPage() {
           : 'All';
   const posts =
     activeCategory === 'All' ? blogPosts : blogPosts.filter((post) => post.category === activeCategory);
+  const categories = ['All', 'Research', 'Open source', 'Company', 'Release'];
   const blogHeroTitle =
     activeCategory === 'All'
       ? 'Blog, research, open source, release notes, and company updates'
@@ -592,26 +722,36 @@ export function BlogPage() {
           <h1>{blogHeroTitle}</h1>
           <p>{blogHeroCopy}</p>
           <div className="category-tabs" aria-label="Blog categories">
-            <a className={activeCategory === 'All' ? 'active' : ''} href="/">
-              All
-            </a>
-            <a className={activeCategory === 'Research' ? 'active' : ''} href="/research">
-              Research
-            </a>
-            <a className={activeCategory === 'Open source' ? 'active' : ''} href="/opensource">
-              Open source
-            </a>
-            <a className={activeCategory === 'Company' ? 'active' : ''} href="/company">
-              Company
-            </a>
-            <a className={activeCategory === 'Release' ? 'active' : ''} href="/release">
-              Release
-            </a>
+            {categories.map((category) => {
+              const href =
+                category === 'All'
+                  ? '/'
+                  : category === 'Open source'
+                    ? '/opensource'
+                    : `/${category.toLowerCase()}`;
+              return (
+                <a className={activeCategory === category ? 'active' : ''} href={href} key={`blog-category-${category}`}>
+                  {category}
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
 
       <section className="blog-section">
+        <div className="blog-lanes" aria-label="Blog content lanes">
+          {categories.slice(1).map((category) => {
+            const count = blogPosts.filter((post) => post.category === category).length;
+            const href = category === 'Open source' ? '/opensource' : `/${category.toLowerCase()}`;
+            return (
+              <a className={activeCategory === category ? 'active' : ''} href={href} key={`blog-lane-${category}`}>
+                <span>{category}</span>
+                <strong>{count}</strong>
+              </a>
+            );
+          })}
+        </div>
         {activeCategory === 'Open source' || activeCategory === 'All' ? (
           <div className="section-heading compact">
             <h2>Open source projects</h2>
@@ -919,7 +1059,7 @@ export function DocsPage() {
         <BapxBrand className="footer-brand" />
         <a href="https://blog.bapx.in/research">Research</a>
         <a href="https://blog.bapx.in/opensource">Open source</a>
-        <a href="mailto:info@bapx.in">info@bapx.in</a>
+        <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
       </footer>
     </main>
   );
@@ -938,9 +1078,9 @@ function AvmLandingPage() {
           <a href="#gateway">API/MCP</a>
           <a href="#pricing">Pricing</a>
           <a href="https://docs.bapx.in">Docs</a>
-          <a href="mailto:info@bapx.in">Contact</a>
+          <a href="https://bapx.in/contact">Contact</a>
         </nav>
-        <a className="header-cta" href="mailto:info@bapx.in?subject=AVM%20install%20package">
+        <a className="header-cta" href="https://bapx.in/contact">
           Request access
         </a>
       </header>
@@ -1084,17 +1224,17 @@ function AvmLandingPage() {
           <article className="story-card">
             <span>Trial</span>
             <h3>60 days free for self-hosted evaluation.</h3>
-            <a href="mailto:info@bapx.in?subject=AVM%2060%20day%20trial">Start trial</a>
+            <a href="https://bapx.in/contact">Start trial</a>
           </article>
           <article className="story-card">
             <span>Self-hosted</span>
             <h3>$5 per month for the headless AVM package on your own VM.</h3>
-            <a href="mailto:info@bapx.in?subject=AVM%20self-hosted%20plan">Use self-hosted</a>
+            <a href="https://bapx.in/contact">Use self-hosted</a>
           </article>
           <article className="story-card">
             <span>White label</span>
             <h3>$20 per month for business white-label solution.</h3>
-            <a href="mailto:info@bapx.in?subject=AVM%20white%20label%20plan">Discuss white label</a>
+            <a href="https://bapx.in/contact">Discuss white label</a>
           </article>
         </div>
       </section>
@@ -1117,7 +1257,7 @@ function AvmLandingPage() {
         <BapxBrand className="footer-brand" />
         <a href="https://bapx.in">Ecosystem</a>
         <a href="https://docs.bapx.in">Docs</a>
-        <a href="mailto:info@bapx.in">info@bapx.in</a>
+        <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
       </footer>
     </main>
   );
@@ -1135,7 +1275,7 @@ export function NotFoundPage() {
           <a href="https://docs.bapx.in">Docs</a>
           <a href="https://api.bapx.in">APIs</a>
           <a href="https://api.bapx.in/mcp">MCP</a>
-          <a href="mailto:info@bapx.in">Contact</a>
+          <a href="https://bapx.in/contact">Contact</a>
         </nav>
       </header>
 

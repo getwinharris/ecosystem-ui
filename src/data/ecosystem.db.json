@@ -4,7 +4,7 @@
     "primaryOrg": "Bapx Media Hub",
     "currentUser": {
       "name": "Getwin Harris",
-      "email": "info@bapx.in",
+      "email": "bapxmediahub@gmail.com",
       "role": "Owner"
     },
     "billing": {
@@ -27,6 +27,12 @@
         }
       ]
     }
+  },
+  "contact": {
+    "email": "bapxmediahub@gmail.com",
+    "phone": "+91 9629433594",
+    "telHref": "tel:+919629433594",
+    "address": "Coimbatore, TN, India"
   },
   "oauthProviders": [
     {

@@ -5,6 +5,7 @@
   "type": "object",
   "required": [
     "identity",
+    "contact",
     "oauthProviders",
     "products",
     "platformNav",
@@ -54,6 +55,16 @@
     "oauthProviders": {
       "type": "array",
       "items": { "$ref": "#/$defs/oauthProvider" }
+    },
+    "contact": {
+      "type": "object",
+      "required": ["email", "phone", "telHref", "address"],
+      "properties": {
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "telHref": { "type": "string" },
+        "address": { "type": "string" }
+      }
     },
     "products": {
       "type": "array",

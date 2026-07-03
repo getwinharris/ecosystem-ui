@@ -1,6 +1,7 @@
 import {
   AdminPage,
   BlogPage,
+  ContactPage,
   DocsPage,
   LandingPage,
   LoginPage,
@@ -15,6 +16,7 @@ function App() {
   const isHomePath = path === '/' || path === '/index.html';
   const isBlogPath = path === '/blog' || path.startsWith('/blog/');
   const isLoginPath = path === '/login' || path === '/signin' || path === '/signup';
+  const isContactPath = path === '/contact' || path.startsWith('/contact/');
   const isPlatformPath = path === '/platform' || path.startsWith('/platform/');
   const isAdminPath = path === '/admin' || path.startsWith('/admin/');
   const isDocsHost = hostname === 'docs.bapx.in' || hostname.startsWith('docs.');
@@ -27,6 +29,10 @@ function App() {
 
   if (isLoginPath) {
     return <LoginPage />;
+  }
+
+  if (isContactPath) {
+    return <ContactPage />;
   }
 
   if (isAdminHost || isAdminPath) {

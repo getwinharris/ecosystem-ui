@@ -19,7 +19,7 @@ Expected launch shape:
   # bootstraps @bapX/vm or the registry-safe package name
   # connects the runtime to api.bapx.in and api.bapx.in/mcp
 
-Contact info@bapx.in for private onboarding while the package is finalized.
+Contact bapxmediahub@gmail.com for private onboarding while the package is finalized.
 MSG
 
 exit 1

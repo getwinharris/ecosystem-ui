@@ -48,6 +48,7 @@ const lines = [
 
 const hostRoutes = [
   ['bapx.in', 'LandingPage', 'Public ecosystem root and business entry'],
+  ['bapx.in/contact', 'ContactPage', 'Contact page with email, phone, and Coimbatore address'],
   ['www.bapx.in', 'LandingPage', 'Public ecosystem root alias'],
   ['platform.bapx.in', 'PlatformPage', 'Unified user dashboard'],
   ['admin.bapx.in', 'AdminPage', 'Internal ecosystem admin for files, Codex, maps, users, billing, workflows'],
@@ -70,6 +71,7 @@ for (const page of [
   'LandingPage',
   'PlatformPage',
   'AdminPage',
+  'ContactPage',
   'LoginPage',
   'MediaHubPage',
   'BlogPage',
