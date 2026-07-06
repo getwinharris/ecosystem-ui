@@ -7,6 +7,9 @@ flowchart LR
   Design["DESIGN.md bapX visual rules"]
   Agents["AGENTS.md agent rules"]
   Contributing["CONTRIBUTING.md issue and contribution workflow"]
+  RepoDocs["docs/index.md repo implementation notes"]
+  BrandDocs["docs/brand-assets.md favicon and logo rules"]
+  Favicon["public/brand/bapx-fav-icon.svg"]
   Data["src/data/ecosystem.db.json"]
   Schema["src/data/ecosystem.schema.json"]
   MapGen["scripts/generate-map.mjs"]
@@ -18,6 +21,9 @@ flowchart LR
   Landing --> Data
   Data --> Schema
   Design --> Styles
+  RepoDocs --> BrandDocs
+  BrandDocs --> Favicon
+  Favicon --> App
   Agents --> Map
   Contributing --> Map
   Contributing --> Agents
