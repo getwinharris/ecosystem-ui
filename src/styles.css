@@ -595,6 +595,92 @@ a {
   color: var(--body-mid);
 }
 
+.product-section,
+.blog-post-body {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto 72px;
+}
+
+.product-card-grid,
+.feature-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.product-card-link,
+.feature-card {
+  display: grid;
+  min-height: 220px;
+  align-content: start;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 22px;
+  background: #181818;
+}
+
+.product-card-link span,
+.feature-card span,
+.post-meta-row span {
+  color: var(--body-mid);
+  font-size: 12px;
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+.product-card-link strong {
+  color: var(--body);
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.product-card-link p,
+.feature-card p,
+.blog-post-body p {
+  margin: 0;
+  color: var(--body-mid);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.product-card-link small {
+  margin-top: auto;
+  color: var(--body);
+  font-size: 13px;
+}
+
+.agents-hero .hero-copy {
+  max-width: 980px;
+}
+
+.compact-blog-section {
+  padding-top: 0;
+}
+
+.blog-post-body {
+  display: grid;
+  max-width: 880px;
+  gap: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: clamp(24px, 5vw, 48px);
+  background: #181818;
+}
+
+.post-meta-row,
+.post-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-meta-row time {
+  color: var(--body-mid);
+  font-size: 13px;
+}
+
 .updates-panel {
   display: grid;
   align-content: start;
@@ -2006,7 +2092,9 @@ a {
   }
 
   .metric-grid,
-  .platform-products {
+  .platform-products,
+  .product-card-grid,
+  .feature-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2048,7 +2136,9 @@ a {
   .client-grid,
   .timeline,
   .story-grid,
-  .not-found-grid {
+  .not-found-grid,
+  .product-card-grid,
+  .feature-strip {
     grid-template-columns: 1fr;
   }
 
@@ -2140,6 +2230,8 @@ a {
   }
 
   .hero-section,
+  .product-section,
+  .blog-post-body,
   .contact-detail-section,
   .services-section,
   .media-section,

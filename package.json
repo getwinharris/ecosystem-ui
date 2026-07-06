@@ -2,7 +2,7 @@
   "name": "ecosystem-ui",
   "version": "1.0.0",
   "author": "bapX",
-  "description": "Central bapX ecosystem UI for bapx.in, mediahub.bapx.in, blog.bapx.in, docs.bapx.in, and AVM brand surfaces",
+  "description": "Central bapX ecosystem UI for bapx.in, agents.bapx.in, mediahub.bapx.in, blog.bapx.in, docs.bapx.in, and admin surfaces",
   "type": "module",
   "scripts": {
     "dev": "vite",

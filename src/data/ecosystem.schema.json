@@ -20,6 +20,7 @@
     "openSourceProjects",
     "mediaHubClients",
     "blogPosts",
+    "blogCategories",
     "docsSections",
     "mapPolicy"
   ],
@@ -150,6 +151,10 @@
       "type": "array",
       "items": { "$ref": "#/$defs/blogPost" }
     },
+    "blogCategories": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/blogCategory" }
+    },
     "docsSections": {
       "type": "array",
       "items": { "$ref": "#/$defs/cardLink" }
@@ -198,13 +203,27 @@
     },
     "blogPost": {
       "type": "object",
-      "required": ["title", "category", "date", "copy", "href"],
+      "required": ["title", "category", "slug", "date", "copy", "href", "content"],
       "properties": {
         "title": { "type": "string" },
         "category": { "type": "string" },
+        "slug": { "type": "string" },
         "date": { "type": "string" },
         "copy": { "type": "string" },
-        "href": { "type": "string" }
+        "href": { "type": "string" },
+        "content": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "blogCategory": {
+      "type": "object",
+      "required": ["label", "slug", "description"],
+      "properties": {
+        "label": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" }
       }
     },
     "oauthProvider": {
