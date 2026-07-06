@@ -11,19 +11,19 @@
       "trialDays": 60,
       "plans": [
         {
-          "name": "AVM self-hosted",
-          "price": "$5/mo",
-          "summary": "Install @bapX/vm on a customer-owned VPS and operate it through bapX API/MCP."
+          "name": "Agents workspace",
+          "price": "Roadmap",
+          "summary": "agents.bapx.in command center for connectors, skills, company repos, workflows, and hosted or user-owned execution targets."
         },
         {
-          "name": "AVM white label",
-          "price": "$20/mo",
-          "summary": "White-label business runtime access after unified account and billing setup."
+          "name": "Unified platform",
+          "price": "Account-based",
+          "summary": "One login, billing profile, OAuth inventory, products, hosted apps, API keys, MCP access, and team permissions across bapX."
         },
         {
           "name": "Media Hub",
           "price": "Custom",
-          "summary": "Web, social, automation, ads, SEO, and business operations priced to the client scope."
+          "summary": "Web, social, automation, ads, SEO, content, and business operations priced to the client scope."
         }
       ]
     }
@@ -66,74 +66,160 @@
   ],
   "products": [
     {
+      "id": "agents",
+      "name": "Agents",
+      "host": "agents.bapx.in",
+      "status": "primary product repo",
+      "plan": "@bapx/agent",
+      "description": "Agent command center for company-as-git-repo workspaces, connectors, skills, automations, knowledge graph records, and governed execution targets."
+    },
+    {
       "id": "platform",
       "name": "Platform",
       "host": "platform.bapx.in",
-      "status": "central dashboard",
+      "status": "unified dashboard",
       "plan": "Unified account",
-      "description": "User-facing dashboard for login, products, billing, subscriptions, hosted apps, and API/MCP access."
-    },
-    {
-      "id": "avm",
-      "name": "AVM",
-      "host": "avm.bapx.in",
-      "status": "package-first",
-      "plan": "$5/mo self-hosted",
-      "description": "Headless @bapX/vm package for customer-owned VPS installs operated through api.bapx.in and api.bapx.in/mcp."
+      "description": "Signed-in user dashboard for login, products, billing, subscriptions, hosted apps, connectors, and account-level API/MCP access."
     },
     {
       "id": "mediahub",
       "name": "Bapx Media Hub",
       "host": "mediahub.bapx.in",
-      "status": "service business",
+      "status": "company service surface",
       "plan": "custom",
-      "description": "Custom web, social, automation, ads, SEO, content, and business presence services around real client operations."
+      "description": "Company services, client portfolio, web, social, automation, ads, SEO, content, and business presence operations driven from company blog content."
     },
     {
       "id": "api",
       "name": "API and MCP",
       "host": "api.bapx.in",
       "status": "gateway",
-      "plan": "usage-aware",
-      "description": "Shared API and MCP gateway for product APIs, tool contracts, schemas, and agent-facing integrations."
+      "plan": "schema-first contracts",
+      "description": "Shared API and MCP gateway for product APIs, connector contracts, schemas, and agent-facing integrations."
     }
   ],
   "platformNav": [
-    { "label": "Home", "href": "https://platform.bapx.in" },
-    { "label": "Products", "href": "https://platform.bapx.in/products" },
-    { "label": "AVM", "href": "https://avm.bapx.in" },
-    { "label": "Media Hub", "href": "https://mediahub.bapx.in" },
-    { "label": "API Keys", "href": "https://platform.bapx.in/api-keys" },
-    { "label": "Usage", "href": "https://platform.bapx.in/usage" },
-    { "label": "Billing", "href": "https://platform.bapx.in/billing" },
-    { "label": "Blogs", "href": "https://blog.bapx.in" },
-    { "label": "Settings", "href": "https://platform.bapx.in/settings" }
+    {
+      "label": "Home",
+      "href": "https://platform.bapx.in"
+    },
+    {
+      "label": "Products",
+      "href": "https://platform.bapx.in/products"
+    },
+    {
+      "label": "Agents",
+      "href": "https://agents.bapx.in"
+    },
+    {
+      "label": "Connectors",
+      "href": "https://platform.bapx.in/connectors"
+    },
+    {
+      "label": "Media Hub",
+      "href": "https://mediahub.bapx.in"
+    },
+    {
+      "label": "API Keys",
+      "href": "https://platform.bapx.in/api-keys"
+    },
+    {
+      "label": "Billing",
+      "href": "https://platform.bapx.in/billing"
+    },
+    {
+      "label": "Blog",
+      "href": "https://blog.bapx.in"
+    },
+    {
+      "label": "Settings",
+      "href": "https://platform.bapx.in/settings"
+    }
   ],
   "adminNav": [
-    { "label": "Control", "href": "https://admin.bapx.in" },
-    { "label": "Files", "href": "https://admin.bapx.in/files" },
-    { "label": "Codex", "href": "https://admin.bapx.in/codex" },
-    { "label": "Maps", "href": "https://admin.bapx.in/maps" },
-    { "label": "Users", "href": "https://admin.bapx.in/users" },
-    { "label": "Billing", "href": "https://admin.bapx.in/billing" },
-    { "label": "Team", "href": "https://admin.bapx.in/team" },
-    { "label": "Workflows", "href": "https://admin.bapx.in/workflows" },
-    { "label": "Settings", "href": "https://admin.bapx.in/settings" }
+    {
+      "label": "Control",
+      "href": "https://admin.bapx.in"
+    },
+    {
+      "label": "Files",
+      "href": "https://admin.bapx.in/files"
+    },
+    {
+      "label": "Repos",
+      "href": "https://admin.bapx.in/repos"
+    },
+    {
+      "label": "Codex",
+      "href": "https://admin.bapx.in/codex"
+    },
+    {
+      "label": "Maps",
+      "href": "https://admin.bapx.in/maps"
+    },
+    {
+      "label": "Schemas",
+      "href": "https://admin.bapx.in/schemas"
+    },
+    {
+      "label": "Users",
+      "href": "https://admin.bapx.in/users"
+    },
+    {
+      "label": "Connectors",
+      "href": "https://admin.bapx.in/connectors"
+    },
+    {
+      "label": "Billing",
+      "href": "https://admin.bapx.in/billing"
+    },
+    {
+      "label": "Publishing",
+      "href": "https://admin.bapx.in/publishing"
+    },
+    {
+      "label": "Releases",
+      "href": "https://admin.bapx.in/releases"
+    },
+    {
+      "label": "Team",
+      "href": "https://admin.bapx.in/team"
+    }
   ],
   "adminTabs": [
-    { "label": "General" },
-    { "label": "OAuth" },
-    { "label": "Billing" },
-    { "label": "Blogs" },
-    { "label": "Projects" },
-    { "label": "Maps" },
-    { "label": "OKF" }
+    {
+      "label": "General"
+    },
+    {
+      "label": "OAuth"
+    },
+    {
+      "label": "Billing"
+    },
+    {
+      "label": "Blogs"
+    },
+    {
+      "label": "Projects"
+    },
+    {
+      "label": "Connectors"
+    },
+    {
+      "label": "Schemas"
+    },
+    {
+      "label": "Maps"
+    },
+    {
+      "label": "OKF"
+    }
   ],
   "ecosystemBackend": {
     "name": "bapX ecosystem backend",
     "runtime": "Node.js + TypeScript",
     "dataStore": "JSON files with documented JSON Schema",
-    "policy": "Do not use bapXvm as the primary bapx.in ecosystem backend. Build a first-party Node.js/TypeScript backend with JSON-first records, schemas, file indexes, maps, workflow state, users, OAuth, and billing contracts. SQL/vector systems can exist only behind generated JSON contracts if they are ever introduced later.",
+    "policy": "Build the central bapX ecosystem backend as first-party Node.js/TypeScript with JSON-schema-first company, project, connector, workflow, content, billing, release, and admin records. SQL is not the product data model for agentic work. If SQL/vector internals exist later, expose them only behind generated JSON Schemas, TypeScript contracts, and agent-readable files.",
     "root": "/root/bapx.in",
     "packagesRoot": "/root/bapx.in/project-packages-git"
   },
@@ -149,12 +235,12 @@
     {
       "name": "ecosystem-ui",
       "path": "/root/bapx.in/project-packages-git/ecosystem-ui",
-      "role": "Public bapX UI, platform shell, admin shell, docs/blog/mediahub static surfaces."
+      "role": "Public bapX UI for bapx.in, platform, admin, docs, blog, and Media Hub surfaces."
     },
     {
-      "name": "bapXvm",
-      "path": "/root/bapx.in/project-packages-git/bapXvm",
-      "role": "AVM package repo for customer-owned VPS installs; not the primary bapx.in ecosystem backend."
+      "name": "agents",
+      "path": "/root/bapx.in/project-packages-git/agents",
+      "role": "Primary agents.bapx.in repo and @bapx/agent package direction."
     },
     {
       "name": "workspace map",
@@ -164,24 +250,40 @@
   ],
   "adminPanels": [
     {
-      "title": "Files",
-      "summary": "Inspect /root/bapx.in, project-package-git repos, docs, maps, schemas, package files, and deploy artifacts."
+      "title": "Files and workspace roots",
+      "summary": "Inspect /root/bapx.in, project-package-git repos, docs, maps, schemas, package files, generated artifacts, and deploy state."
     },
     {
-      "title": "Codex terminal",
-      "summary": "Open project-aware Codex CLI/terminal sessions for ecosystem maintenance, deploys, map generation, and repo checks."
+      "title": "Repo shipping tracker",
+      "summary": "Track what each Git repo is shipping, current branch, linked issue, PR, validation result, map freshness, and deployment target."
+    },
+    {
+      "title": "Codex terminal and sessions",
+      "summary": "Open project-aware Codex CLI/terminal sessions for ecosystem maintenance, deploys, map generation, repo checks, and issue-first work."
     },
     {
       "title": "Whole ecosystem map",
       "summary": "Read /root/bapx.in/map.mmd plus each repo map before changing routing, backend contracts, schemas, docs, or automations."
     },
     {
-      "title": "Users and OAuth",
-      "summary": "Manage unified users, OAuth providers, roles, team access, project membership, and app entitlements."
+      "title": "JSON schemas and records",
+      "summary": "Manage JSON Schemas for companies, projects, connectors, workflows, blog posts, releases, billing state, users, and admin operations."
+    },
+    {
+      "title": "Users, roles, and OAuth",
+      "summary": "Manage unified users, OAuth providers, team roles, project membership, app entitlements, and session policy."
+    },
+    {
+      "title": "Connector inventory",
+      "summary": "Track GitHub, Google Workspace, OpenAI, OpenRouter, Firecrawl, Playwright, SSH, Vercel, webhook, cron, local URL, and remote URL connectors."
     },
     {
       "title": "Razorpay billing",
       "summary": "Manage billing records, subscriptions, invoices, payment links, webhook reconciliation, and plan state through Razorpay-backed contracts."
+    },
+    {
+      "title": "Publishing workflow",
+      "summary": "Publish blog, research, open source, release notes, docs, Media Hub updates, and SEO content from markdown-like JSON records."
     },
     {
       "title": "Team workflows",
@@ -189,16 +291,44 @@
     }
   ],
   "metrics": [
-    { "label": "Active products", "value": "4", "hint": "Platform, AVM, Media Hub, API/MCP" },
-    { "label": "MCP gateway", "value": "api.bapx.in/mcp", "hint": "Shared agent gateway" },
-    { "label": "Trial window", "value": "60 days", "hint": "Self-hosted AVM evaluation" },
-    { "label": "Runtime proxy", "value": "ACM********", "hint": "Generated per customer VM" }
+    {
+      "label": "Active repos",
+      "value": "2",
+      "hint": "ecosystem-ui and agents"
+    },
+    {
+      "label": "Primary product",
+      "value": "agents.bapx.in",
+      "hint": "@bapx/agent command center"
+    },
+    {
+      "label": "MCP gateway",
+      "value": "api.bapx.in/mcp",
+      "hint": "Shared agent gateway"
+    },
+    {
+      "label": "Content lanes",
+      "value": "4",
+      "hint": "Research, open source, company, releases"
+    }
   ],
   "onboarding": [
-    { "label": "Create unified account", "state": "done" },
-    { "label": "Connect Google, GitHub, OpenAI, or Apple OAuth", "state": "pending" },
-    { "label": "Add billing and trial state", "state": "pending" },
-    { "label": "Install @bapX/vm on the customer VPS", "state": "pending" }
+    {
+      "label": "Create unified account",
+      "state": "done"
+    },
+    {
+      "label": "Connect Google, GitHub, OpenAI, or Apple OAuth",
+      "state": "pending"
+    },
+    {
+      "label": "Add connector inventory for GitHub, Google Workspace, OpenRouter, Firecrawl, Playwright, SSH, Vercel, cron, webhook, local URL, and remote URL",
+      "state": "pending"
+    },
+    {
+      "label": "Create company/project JSON records and map them to repos",
+      "state": "pending"
+    }
   ],
   "openSourceProjects": [
     {
@@ -227,23 +357,45 @@
       "name": "GUT Conference",
       "category": "Web product",
       "summary": "Web product development and management tailored for conference operations.",
-      "links": [{ "label": "Website", "href": "https://gutconference.online/" }]
+      "links": [
+        {
+          "label": "Website",
+          "href": "https://gutconference.online/"
+        }
+      ]
     },
     {
       "name": "Sri Panchami Spiritual",
       "category": "Web product",
       "summary": "Web product development and management tailored for a spiritual service brand.",
-      "links": [{ "label": "Website", "href": "https://sripanchamispiritual.com/" }]
+      "links": [
+        {
+          "label": "Website",
+          "href": "https://sripanchamispiritual.com/"
+        }
+      ]
     },
     {
       "name": "NEBO Lifestyle Clinic",
       "category": "Web and social",
       "summary": "Full business conversion online funnel, website, and social media management.",
       "links": [
-        { "label": "Website", "href": "https://nebowellness.com/" },
-        { "label": "Facebook", "href": "https://www.facebook.com/nebolifestyleclinic" },
-        { "label": "Instagram", "href": "https://www.instagram.com/nebolifestyleclinic/" },
-        { "label": "YouTube", "href": "https://www.youtube.com/@nebolifestyleclinic" }
+        {
+          "label": "Website",
+          "href": "https://nebowellness.com/"
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/nebolifestyleclinic"
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/nebolifestyleclinic/"
+        },
+        {
+          "label": "YouTube",
+          "href": "https://www.youtube.com/@nebolifestyleclinic"
+        }
       ]
     },
     {
@@ -251,11 +403,26 @@
       "category": "Web and social",
       "summary": "Website and social media management for business presence and customer acquisition.",
       "links": [
-        { "label": "Website", "href": "https://flexifeet.net/" },
-        { "label": "Instagram", "href": "https://www.instagram.com/flexifeetmalaysia/" },
-        { "label": "Facebook", "href": "https://www.facebook.com/flexifeetmalaysia" },
-        { "label": "YouTube", "href": "https://www.youtube.com/@flexifeetmalaysia" },
-        { "label": "TikTok", "href": "https://www.tiktok.com/@flexifeetmalaysia" }
+        {
+          "label": "Website",
+          "href": "https://flexifeet.net/"
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/flexifeetmalaysia/"
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/flexifeetmalaysia"
+        },
+        {
+          "label": "YouTube",
+          "href": "https://www.youtube.com/@flexifeetmalaysia"
+        },
+        {
+          "label": "TikTok",
+          "href": "https://www.tiktok.com/@flexifeetmalaysia"
+        }
       ]
     },
     {
@@ -263,10 +430,22 @@
       "category": "Web and social",
       "summary": "Website and social media management for healthcare education and patient reach.",
       "links": [
-        { "label": "Website", "href": "https://indianbariatrics.com/" },
-        { "label": "Facebook", "href": "https://www.facebook.com/FightObesityAndDiabetes/" },
-        { "label": "YouTube", "href": "https://www.youtube.com/@Bariatricdoctor" },
-        { "label": "Instagram", "href": "https://www.instagram.com/bariatric_doctor/" }
+        {
+          "label": "Website",
+          "href": "https://indianbariatrics.com/"
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/FightObesityAndDiabetes/"
+        },
+        {
+          "label": "YouTube",
+          "href": "https://www.youtube.com/@Bariatricdoctor"
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/bariatric_doctor/"
+        }
       ]
     },
     {
@@ -274,74 +453,92 @@
       "category": "Social only",
       "summary": "Social media content and management without a website build.",
       "links": [
-        { "label": "Instagram", "href": "https://www.instagram.com/happyfeeterode/" },
-        { "label": "Facebook", "href": "https://www.facebook.com/happyfeeterode/" },
-        { "label": "YouTube", "href": "https://www.youtube.com/@happyfeeterode" }
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/happyfeeterode/"
+        },
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/happyfeeterode/"
+        },
+        {
+          "label": "YouTube",
+          "href": "https://www.youtube.com/@happyfeeterode"
+        }
       ]
     }
   ],
   "blogPosts": [
     {
-      "title": "AVM package roadmap for customer-owned VPS installs",
-      "category": "Product",
-      "date": "2026-07-02",
-      "copy": "The self-hosted AVM direction, npm package target, connector path, and what must be production-ready before managed resale.",
-      "href": "https://blog.bapx.in/product/avm-package-roadmap"
+      "title": "agents.bapx.in becomes the active product direction",
+      "category": "Release",
+      "slug": "agents-active-product-direction",
+      "date": "2026-07-06",
+      "copy": "The active product direction is now agents.bapx.in and @bapx/agent, with the legacy checkout removed from the workspace.",
+      "href": "https://blog.bapx.in/release/agents-active-product-direction",
+      "content": [
+        "bapX is moving current product work to agents.bapx.in. The previous runtime-first framing created confusion between an install path and the command center we need to ship.",
+        "The active repo is /root/bapx.in/project-packages-git/agents and the package direction is @bapx/agent. The public UI should point users to connectors, company workspaces, hosted sandboxes, SSH targets, Vercel, webhooks, cron, and API/MCP records instead of asking them to install dependencies inside a server first.",
+        "This release note exists so agents and humans can read the product state from the blog surface, not from scattered chat memory."
+      ]
     },
     {
-      "title": "Repository maps as a working knowledge graph",
+      "title": "JSON-schema-first records for agentic company workspaces",
       "category": "Research",
-      "date": "2026-07-02",
-      "copy": "How repo maps should connect packages, routes, schemas, MCP tools, docs, skills, providers, and architecture gaps.",
-      "href": "https://blog.bapx.in/research/repository-maps"
+      "slug": "json-schema-first-agentic-records",
+      "date": "2026-07-06",
+      "copy": "Why bapX company, project, connector, workflow, release, billing, and content records should be JSON-schema-first before any storage implementation.",
+      "href": "https://blog.bapx.in/research/json-schema-first-agentic-records",
+      "content": [
+        "Agentic systems need data that can be inspected, diffed, edited, and moved by both humans and agents. For bapX, that means company records, project records, connector records, workflow records, release records, billing state, and blog content should start as documented JSON with generated TypeScript contracts.",
+        "SQL can exist later as an internal implementation detail, but it should not be the product model agents have to guess. The agent-readable contract is the JSON Schema and the OKF-linked markdown around it.",
+        "admin.bapx.in should make these records visible: what exists, what changed, what repo shipped it, what issue/PR validated it, and what public surface now depends on it."
+      ]
     },
     {
       "title": "Open source projects in the bapX research lane",
       "category": "Open source",
-      "date": "2026-07-02",
+      "slug": "open-source-projects-in-the-bapx-research-lane",
+      "date": "2026-07-06",
       "copy": "Public repositories including pak-it, map.mmd, x8Dsub-byte, and ByteOmniDiffus-RLM-HyperAGI, with contribution paths through GitHub.",
-      "href": "https://blog.bapx.in/opensource"
+      "href": "https://blog.bapx.in/opensource/open-source-projects-in-the-bapx-research-lane",
+      "content": [
+        "Open source content should be driven from the blog category so each project can carry context, release notes, contribution notes, and SEO text without hardcoding separate pages.",
+        "Each project card links to GitHub, but the blog explains why the project exists, how it relates to bapX research, and what contributors or agents should read first.",
+        "The current open source lane includes pak-it, map.mmd, x8Dsub-byte, and ByteOmniDiffus-RLM-HyperAGI."
+      ]
     },
     {
-      "title": "Media Hub systems for web, social, and business presence",
+      "title": "Media Hub content belongs in company posts",
       "category": "Company",
-      "date": "2026-07-02",
-      "copy": "How client websites, content, ads, SEO, funnels, and social operations become managed digital business systems.",
-      "href": "https://mediahub.bapx.in"
+      "slug": "media-hub-content-belongs-in-company-posts",
+      "date": "2026-07-06",
+      "copy": "Media Hub is company/client/service content. It should be updated through company blog posts and reflected on mediahub.bapx.in.",
+      "href": "https://blog.bapx.in/company/media-hub-content-belongs-in-company-posts",
+      "content": [
+        "mediahub.bapx.in is the client portfolio and company service surface. The durable source of new updates should be blog content in the Company category, then rendered into Media Hub sections where useful.",
+        "This keeps client updates, service notes, research-led business content, and public announcements in one publishing flow.",
+        "The admin publishing workflow should track which posts feed Media Hub and which posts are only company notes."
+      ]
     },
     {
-      "title": "API and MCP gateway planning for product surfaces",
-      "category": "Engineering",
-      "date": "2026-07-02",
-      "copy": "Notes for api.bapx.in, api.bapx.in/mcp, product connectors, schemas, auth, and runtime contracts.",
-      "href": "https://docs.bapx.in"
-    },
-    {
-      "title": "Agent framework and model research notes",
+      "title": "Repository maps as a working knowledge graph",
       "category": "Research",
+      "slug": "repository-maps-as-a-working-knowledge-graph",
       "date": "2026-07-02",
-      "copy": "Research notes for agent frameworks, model training direction, evaluation, and how research stays distinct from installable products.",
-      "href": "https://blog.bapx.in/research"
-    },
-    {
-      "title": "Release notes for bapX product surfaces",
-      "category": "Release",
-      "date": "2026-07-02",
-      "copy": "A release log for public site, docs, AVM, Media Hub, API, MCP, and product-surface changes.",
-      "href": "https://blog.bapx.in/release"
-    },
-    {
-      "title": "Company notes from Bapx Media Hub",
-      "category": "Company",
-      "date": "2026-07-02",
-      "copy": "Company updates, services, portfolio direction, public announcements, and operating notes.",
-      "href": "https://blog.bapx.in/company"
+      "copy": "How repo maps connect packages, routes, schemas, MCP tools, docs, connectors, providers, and architecture gaps.",
+      "href": "https://blog.bapx.in/research/repository-maps-as-a-working-knowledge-graph",
+      "content": [
+        "A repo map is not decoration. It is a working knowledge graph for agents and humans before they edit a repo.",
+        "The map should show hosts, routed pages, JSON data, schemas, products, OAuth providers, blog/docs sections, Media Hub clients, open source projects, admin panels, workspace roots, billing, API/MCP gateways, and known gaps.",
+        "Every meaningful change should regenerate the map so the next agent starts from current structure."
+      ]
     }
   ],
   "docsSections": [
     {
       "title": "Developer Guides",
-      "copy": "Start here for product architecture, AVM install flow, app integration, MCP usage, schemas, OAuth, and environment setup.",
+      "copy": "Start here for product architecture, agents workspace flow, app integration, MCP usage, schemas, OAuth, and environment setup.",
       "href": "#developer-guides"
     },
     {
@@ -356,7 +553,7 @@
     },
     {
       "title": "Pricing",
-      "copy": "Self-hosted AVM, white-label business plans, Media Hub services, usage-based API costs, and enterprise terms.",
+      "copy": "Agents workspace roadmap, unified account billing, Media Hub services, connector usage, and enterprise terms.",
       "href": "#pricing"
     },
     {
@@ -375,5 +572,27 @@
     "combinedMap": "/root/bapx.in/map.mmd",
     "generator": "scripts/generate-map.mjs",
     "testCommand": "npm test"
-  }
+  },
+  "blogCategories": [
+    {
+      "label": "Research",
+      "slug": "research",
+      "description": "Research notes, model/runtime analysis, maps, OKF notes, and agent architecture."
+    },
+    {
+      "label": "Open source",
+      "slug": "opensource",
+      "description": "Public repositories, contribution notes, project updates, and GitHub-first release context."
+    },
+    {
+      "label": "Company",
+      "slug": "company",
+      "description": "Media Hub updates, client work, operations, public announcements, and business notes."
+    },
+    {
+      "label": "Release",
+      "slug": "release",
+      "description": "Release notes for ecosystem-ui, agents, docs, API/MCP, content, and admin operations."
+    }
+  ]
 }
