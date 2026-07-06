@@ -13,7 +13,15 @@ export type CardLink = {
 
 export type BlogPost = CardLink & {
   category: string;
+  slug: string;
   date: string;
+  content: string[];
+};
+
+export type BlogCategory = {
+  label: string;
+  slug: string;
+  description: string;
 };
 
 export type MediaHubClient = {
@@ -112,6 +120,7 @@ type EcosystemDb = {
   openSourceProjects: CardLink[];
   mediaHubClients: MediaHubClient[];
   blogPosts: BlogPost[];
+  blogCategories: BlogCategory[];
   docsSections: CardLink[];
   mapPolicy: {
     repoMap: string;
@@ -125,4 +134,5 @@ export const ecosystemDb = data as EcosystemDb;
 export const openSourceProjects = ecosystemDb.openSourceProjects;
 export const mediaHubClients = ecosystemDb.mediaHubClients;
 export const blogPosts = ecosystemDb.blogPosts;
+export const blogCategories = ecosystemDb.blogCategories;
 export const docsSections = ecosystemDb.docsSections;

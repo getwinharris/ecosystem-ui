@@ -58,7 +58,7 @@ const hostRoutes = [
   ['mediahub.bapx.in', 'MediaHubPage', 'Media Hub portfolio and services'],
   ['blog.bapx.in', 'BlogPage', 'Blog categories and posts'],
   ['docs.bapx.in', 'DocsPage', 'Developer docs for all products'],
-  ['avm.bapx.in', 'AvmLandingPage', 'Headless @bapX/vm install surface'],
+  ['agents.bapx.in', 'AgentsPage', 'Agent command center for connectors, skills, workflows, and company repos'],
   ['vm.bapx.in', 'NotFoundPage', 'Reserved generated runtime namespace'],
 ];
 
@@ -79,7 +79,7 @@ for (const page of [
   'MediaHubPage',
   'BlogPage',
   'DocsPage',
-  'AvmLandingPage',
+  'AgentsPage',
   'NotFoundPage',
 ]) {
   lines.push(`  Landing --> ${page}["${page}"]`);
@@ -93,7 +93,7 @@ for (const product of db.products) {
   );
   lines.push(`    Data --> ${id}`);
   if (product.id === 'platform') lines.push(`    ${id} --> PlatformPage`);
-  if (product.id === 'avm') lines.push(`    ${id} --> AvmLandingPage`);
+  if (product.id === 'agents') lines.push(`    ${id} --> AgentsPage`);
   if (product.id === 'mediahub') lines.push(`    ${id} --> MediaHubPage`);
 }
 lines.push('  end', '');
@@ -176,12 +176,10 @@ lines.push(
   '',
   '  ApiGateway["api.bapx.in"]',
   '  McpGateway["api.bapx.in/mcp"]',
-  '  AvmRuntime["ACM random8.vm.bapx.in generated runtime hosts"]',
   '  PlatformPage --> ApiGateway',
   '  AdminPage --> Data',
-  '  AvmLandingPage --> ApiGateway',
-  '  AvmLandingPage --> McpGateway',
-  '  AvmLandingPage --> AvmRuntime',
+  '  AgentsPage --> ApiGateway',
+  '  AgentsPage --> McpGateway',
   '  LoginPage --> ApiGateway',
   ''
 );

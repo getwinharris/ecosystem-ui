@@ -41,8 +41,8 @@ flowchart LR
     Host_blog_bapx_in --> BlogPage
     Host_docs_bapx_in["docs.bapx.in<br/>Developer docs for all products"]
     Host_docs_bapx_in --> DocsPage
-    Host_avm_bapx_in["avm.bapx.in<br/>Headless @bapX/vm install surface"]
-    Host_avm_bapx_in --> AvmLandingPage
+    Host_agents_bapx_in["agents.bapx.in<br/>Agent command center for connectors, skills, workflows, and company repos"]
+    Host_agents_bapx_in --> AgentsPage
     Host_vm_bapx_in["vm.bapx.in<br/>Reserved generated runtime namespace"]
     Host_vm_bapx_in --> NotFoundPage
   end
@@ -55,17 +55,17 @@ flowchart LR
   Landing --> MediaHubPage["MediaHubPage"]
   Landing --> BlogPage["BlogPage"]
   Landing --> DocsPage["DocsPage"]
-  Landing --> AvmLandingPage["AvmLandingPage"]
+  Landing --> AgentsPage["AgentsPage"]
   Landing --> NotFoundPage["NotFoundPage"]
 
   subgraph Products["Products and ecosystem surfaces"]
-    Product_platform["Platform<br/>platform.bapx.in<br/>central dashboard"]
+    Product_agents["Agents<br/>agents.bapx.in<br/>primary product repo"]
+    Data --> Product_agents
+    Product_agents --> AgentsPage
+    Product_platform["Platform<br/>platform.bapx.in<br/>unified dashboard"]
     Data --> Product_platform
     Product_platform --> PlatformPage
-    Product_avm["AVM<br/>avm.bapx.in<br/>package-first"]
-    Data --> Product_avm
-    Product_avm --> AvmLandingPage
-    Product_mediahub["Bapx Media Hub<br/>mediahub.bapx.in<br/>service business"]
+    Product_mediahub["Bapx Media Hub<br/>mediahub.bapx.in<br/>company service surface"]
     Data --> Product_mediahub
     Product_mediahub --> MediaHubPage
     Product_api["API and MCP<br/>api.bapx.in<br/>gateway"]
@@ -73,28 +73,40 @@ flowchart LR
   end
 
   subgraph AdminOps["admin.bapx.in internal operations"]
-    AdminPanel_files["Files<br/>Inspect /root/bapx.in, project-package-git repos, docs, maps, schemas, package files, and deploy artifacts."]
-    Data --> AdminPanel_files
-    AdminPanel_files --> AdminPage
-    AdminPanel_codex_terminal["Codex terminal<br/>Open project-aware Codex CLI/terminal sessions for ecosystem maintenance, deploys, map generation, and repo checks."]
-    Data --> AdminPanel_codex_terminal
-    AdminPanel_codex_terminal --> AdminPage
+    AdminPanel_files_and_workspace_roots["Files and workspace roots<br/>Inspect /root/bapx.in, project-package-git repos, docs, maps, schemas, package files, generated artifacts, and deploy state."]
+    Data --> AdminPanel_files_and_workspace_roots
+    AdminPanel_files_and_workspace_roots --> AdminPage
+    AdminPanel_repo_shipping_tracker["Repo shipping tracker<br/>Track what each Git repo is shipping, current branch, linked issue, PR, validation result, map freshness, and deployment target."]
+    Data --> AdminPanel_repo_shipping_tracker
+    AdminPanel_repo_shipping_tracker --> AdminPage
+    AdminPanel_codex_terminal_and_sessions["Codex terminal and sessions<br/>Open project-aware Codex CLI/terminal sessions for ecosystem maintenance, deploys, map generation, repo checks, and issue-first work."]
+    Data --> AdminPanel_codex_terminal_and_sessions
+    AdminPanel_codex_terminal_and_sessions --> AdminPage
     AdminPanel_whole_ecosystem_map["Whole ecosystem map<br/>Read /root/bapx.in/map.mmd plus each repo map before changing routing, backend contracts, schemas, docs, or automations."]
     Data --> AdminPanel_whole_ecosystem_map
     AdminPanel_whole_ecosystem_map --> AdminPage
-    AdminPanel_users_and_oauth["Users and OAuth<br/>Manage unified users, OAuth providers, roles, team access, project membership, and app entitlements."]
-    Data --> AdminPanel_users_and_oauth
-    AdminPanel_users_and_oauth --> AdminPage
+    AdminPanel_json_schemas_and_records["JSON schemas and records<br/>Manage JSON Schemas for companies, projects, connectors, workflows, blog posts, releases, billing state, users, and admin operations."]
+    Data --> AdminPanel_json_schemas_and_records
+    AdminPanel_json_schemas_and_records --> AdminPage
+    AdminPanel_users_roles_and_oauth["Users, roles, and OAuth<br/>Manage unified users, OAuth providers, team roles, project membership, app entitlements, and session policy."]
+    Data --> AdminPanel_users_roles_and_oauth
+    AdminPanel_users_roles_and_oauth --> AdminPage
+    AdminPanel_connector_inventory["Connector inventory<br/>Track GitHub, Google Workspace, OpenAI, OpenRouter, Firecrawl, Playwright, SSH, Vercel, webhook, cron, local URL, and remote URL connectors."]
+    Data --> AdminPanel_connector_inventory
+    AdminPanel_connector_inventory --> AdminPage
     AdminPanel_razorpay_billing["Razorpay billing<br/>Manage billing records, subscriptions, invoices, payment links, webhook reconciliation, and plan state through Razorpay-backed contracts."]
     Data --> AdminPanel_razorpay_billing
     AdminPanel_razorpay_billing --> AdminPage
+    AdminPanel_publishing_workflow["Publishing workflow<br/>Publish blog, research, open source, release notes, docs, Media Hub updates, and SEO content from markdown-like JSON records."]
+    Data --> AdminPanel_publishing_workflow
+    AdminPanel_publishing_workflow --> AdminPage
     AdminPanel_team_workflows["Team workflows<br/>Run internal bapX team operations, client approvals, job tracking, automations, content workflow, and ecosystem build tasks."]
     Data --> AdminPanel_team_workflows
     AdminPanel_team_workflows --> AdminPage
     WorkspaceProject_ecosystem_ui["ecosystem-ui<br/>/root/bapx.in/project-packages-git/ecosystem-ui"]
     WorkspaceProject_ecosystem_ui --> AdminPage
-    WorkspaceProject_bapxvm["bapXvm<br/>/root/bapx.in/project-packages-git/bapXvm"]
-    WorkspaceProject_bapxvm --> AdminPage
+    WorkspaceProject_agents["agents<br/>/root/bapx.in/project-packages-git/agents"]
+    WorkspaceProject_agents --> AdminPage
     WorkspaceProject_workspace_map["workspace map<br/>/root/bapx.in/map.mmd"]
     WorkspaceProject_workspace_map --> AdminPage
   end
@@ -128,30 +140,21 @@ flowchart LR
   end
 
   subgraph BlogDocs["Blog and docs knowledge"]
-    Blog_avm_package_roadmap_for_customer_owned_vps_installs["Product: AVM package roadmap for customer-owned VPS installs"]
-    Data --> Blog_avm_package_roadmap_for_customer_owned_vps_installs
-    Blog_avm_package_roadmap_for_customer_owned_vps_installs --> BlogPage
-    Blog_repository_maps_as_a_working_knowledge_graph["Research: Repository maps as a working knowledge graph"]
-    Data --> Blog_repository_maps_as_a_working_knowledge_graph
-    Blog_repository_maps_as_a_working_knowledge_graph --> BlogPage
+    Blog_agents_bapx_in_becomes_the_active_product_direction["Release: agents.bapx.in becomes the active product direction"]
+    Data --> Blog_agents_bapx_in_becomes_the_active_product_direction
+    Blog_agents_bapx_in_becomes_the_active_product_direction --> BlogPage
+    Blog_json_schema_first_records_for_agentic_company_workspaces["Research: JSON-schema-first records for agentic company workspaces"]
+    Data --> Blog_json_schema_first_records_for_agentic_company_workspaces
+    Blog_json_schema_first_records_for_agentic_company_workspaces --> BlogPage
     Blog_open_source_projects_in_the_bapx_research_lane["Open source: Open source projects in the bapX research lane"]
     Data --> Blog_open_source_projects_in_the_bapx_research_lane
     Blog_open_source_projects_in_the_bapx_research_lane --> BlogPage
-    Blog_media_hub_systems_for_web_social_and_business_presence["Company: Media Hub systems for web, social, and business presence"]
-    Data --> Blog_media_hub_systems_for_web_social_and_business_presence
-    Blog_media_hub_systems_for_web_social_and_business_presence --> BlogPage
-    Blog_api_and_mcp_gateway_planning_for_product_surfaces["Engineering: API and MCP gateway planning for product surfaces"]
-    Data --> Blog_api_and_mcp_gateway_planning_for_product_surfaces
-    Blog_api_and_mcp_gateway_planning_for_product_surfaces --> BlogPage
-    Blog_agent_framework_and_model_research_notes["Research: Agent framework and model research notes"]
-    Data --> Blog_agent_framework_and_model_research_notes
-    Blog_agent_framework_and_model_research_notes --> BlogPage
-    Blog_release_notes_for_bapx_product_surfaces["Release: Release notes for bapX product surfaces"]
-    Data --> Blog_release_notes_for_bapx_product_surfaces
-    Blog_release_notes_for_bapx_product_surfaces --> BlogPage
-    Blog_company_notes_from_bapx_media_hub["Company: Company notes from Bapx Media Hub"]
-    Data --> Blog_company_notes_from_bapx_media_hub
-    Blog_company_notes_from_bapx_media_hub --> BlogPage
+    Blog_media_hub_content_belongs_in_company_posts["Company: Media Hub content belongs in company posts"]
+    Data --> Blog_media_hub_content_belongs_in_company_posts
+    Blog_media_hub_content_belongs_in_company_posts --> BlogPage
+    Blog_repository_maps_as_a_working_knowledge_graph["Research: Repository maps as a working knowledge graph"]
+    Data --> Blog_repository_maps_as_a_working_knowledge_graph
+    Blog_repository_maps_as_a_working_knowledge_graph --> BlogPage
     Docs_developer_guides["Docs: Developer Guides"]
     Data --> Docs_developer_guides
     Docs_developer_guides --> DocsPage
@@ -211,11 +214,9 @@ flowchart LR
 
   ApiGateway["api.bapx.in"]
   McpGateway["api.bapx.in/mcp"]
-  AvmRuntime["ACM random8.vm.bapx.in generated runtime hosts"]
   PlatformPage --> ApiGateway
   AdminPage --> Data
-  AvmLandingPage --> ApiGateway
-  AvmLandingPage --> McpGateway
-  AvmLandingPage --> AvmRuntime
+  AgentsPage --> ApiGateway
+  AgentsPage --> McpGateway
   LoginPage --> ApiGateway
 

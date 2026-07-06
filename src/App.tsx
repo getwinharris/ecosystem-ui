@@ -1,4 +1,5 @@
 import {
+  AgentsPage,
   AdminPage,
   BlogPage,
   ContactPage,
@@ -24,6 +25,8 @@ function App() {
   const isMediaHubHost = hostname === 'mediahub.bapx.in' || hostname.startsWith('mediahub.');
   const isPlatformHost = hostname === 'platform.bapx.in' || hostname.startsWith('platform.');
   const isAdminHost = hostname === 'admin.bapx.in' || hostname.startsWith('admin.');
+  const isAgentsHost = hostname === 'agents.bapx.in' || hostname.startsWith('agents.');
+  const isAvmHost = hostname === 'avm.bapx.in' || hostname.startsWith('avm.');
   const isReservedVmRootHost = hostname === 'vm.bapx.in';
   const isDocsPath = path === '/docs' || path.startsWith('/docs/');
 
@@ -43,6 +46,10 @@ function App() {
     return <PlatformPage />;
   }
 
+  if (isAgentsHost) {
+    return <AgentsPage />;
+  }
+
   if (isDocsHost || isDocsPath) {
     return <DocsPage />;
   }
@@ -56,6 +63,10 @@ function App() {
   }
 
   if (isReservedVmRootHost) {
+    return <NotFoundPage />;
+  }
+
+  if (isAvmHost) {
     return <NotFoundPage />;
   }
 
